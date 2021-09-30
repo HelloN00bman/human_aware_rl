@@ -22,7 +22,7 @@ class TestPPO(unittest.TestCase):
         # Uncomment to make current output standard output to check against
         # save_pickle(train_info, 'data/testing/ppo_sp_train_info')
 
-        expected_sp_dict = load_pickle('data/testing/ppo_sp_train_info')
+        expected_sp_dict = load_pickle('human_aware_rl/data/testing/ppo_sp_train_info')
         for k, v in train_info.items():
             for found_item, expected_item in zip(v, expected_sp_dict[k]):
                 self.assertAlmostEqual(found_item, expected_item, places=5)
@@ -54,7 +54,7 @@ class TestPPO(unittest.TestCase):
         # Uncomment to make current output standard output to check against
         # save_pickle(train_info1, 'data/testing/ppo_bc_train_info')
 
-        expected_dict = load_pickle('data/testing/ppo_bc_train_info')
+        expected_dict = load_pickle('human_aware_rl/data/testing/ppo_bc_train_info')
         for k, v in train_info1.items():
             for found_item, expected_item in zip(v, expected_dict[k]):
                 self.assertAlmostEqual(found_item, expected_item, places=5)

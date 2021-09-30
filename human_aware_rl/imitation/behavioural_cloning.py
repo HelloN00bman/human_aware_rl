@@ -17,13 +17,13 @@ from overcooked_ai_py.utils import save_pickle, load_pickle
 from human_aware_rl.baselines_utils import create_dir_if_not_exists
 from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_from_data
 
-BC_SAVE_DIR = "data/bc_runs/"
+BC_SAVE_DIR = "human_aware_rl/data/bc_runs/"
 
 DEFAULT_DATA_PARAMS = {
     "train_mdps": ["simple"],
     "ordered_trajs": True,
     "human_ai_trajs": False,
-    "data_path": "data/human/anonymized/clean_train_trials.pkl"
+    "data_path": "human_aware_rl/data/human/anonymized/clean_train_trials.pkl"
 }
 
 DEFAULT_BC_PARAMS = {
