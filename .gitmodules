@@ -7,7 +7,7 @@
 	branch = overcooked_ai_improvements
 [submodule "stable-baselines"]
 	path = stable-baselines
-	url = https://github.com/micahcarroll/stable-baselines.git
+	url = https://github.com/HelloN00bman/stable-baselines.git
 [submodule "tfjs-converter"]
 	path = tfjs-converter
 	url = https://github.com/tensorflow/tfjs-converter.git
