@@ -5,12 +5,13 @@
 [submodule "overcooked_ai"]
 	path = overcooked_ai
 	url = https://github.com/HelloN00bman/overcooked_ai.git
-	branch = overcooked_ai_improvements
+	branch = overcooked_stable
 [submodule "stable-baselines"]
 	path = stable-baselines
 	url = https://github.com/HelloN00bman/stable-baselines.git
         branch = overcooked_stable
 [submodule "tfjs-converter"]
 	path = tfjs-converter
-	url = https://github.com/tensorflow/tfjs-converter.git
+	url = https://github.com/HelloN00bman/tfjs-converter.git
+	name = overcooked_stable
 
