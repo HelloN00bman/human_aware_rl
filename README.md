@@ -1,3 +1,22 @@
+# From scratch installation instructions for Ben, Michelle, Ravi project
+
+```
+git clone --single-branch --branch overcooked_stable --recursive git@github.com:HelloN00bman/human_aware_rl.git
+cd human_aware_rl
+conda create -n overcooked python=3.7
+conda activate overcooked
+pip install scipy==1.5.1
+pip install pandas==1.0.1
+conda install mpi4py
+pip install tensorflow==1.13.1
+pip install smmap
+conda install matplotlib
+conda install pytz
+./install.sh
+python human_aware_rl/run_tests.py
+```
+
+
 # Human-Aware Reinforcement Learning
 
 This code can be used to reproduce the results in the paper [On the Utility of Learning about Humans for Human-AI Coordination](https://arxiv.org/abs/1910.05789). *Note that this repository uses a specific older commit of the [overcooked_ai repository](https://github.com/HumanCompatibleAI/overcooked_ai)*, and should not be expected to work with the current version of that repository.
