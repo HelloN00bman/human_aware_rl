@@ -3,7 +3,7 @@ from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState
 from overcooked_ai_py.planning.planners import MediumLevelPlanner
 from overcooked_ai_py.mdp.actions import Action, Direction
 import pdb
-from state_featurization_for_irl import *
+# from state_featurization_for_irl import *
 
 
 
@@ -88,33 +88,6 @@ def find_policy(n_states, n_actions, transition_probabilities, reward, discount,
     print("policy shape", policy.shape)
     return policy
 
-
-
-
-
-
-
-
-def main():
-    state_seq, action_seq, feature_seq, transition_matrix, state_idx_to_state, state_tuple_to_state_idx, state_reward_list = run_featurization()
-    print("state_seq shape", state_seq.shape)
-    print('action_seq shape', action_seq.shape)
-    print("feature_seq.shape = ", feature_seq.shape)
-    print("state_reward_list", state_reward_list.shape)
-    # print(feature_seq)
-
-    n_states = transition_matrix.shape[0]
-    n_actions = transition_matrix.shape[1]
-    transition_probabilities = transition_matrix
-    reward = state_reward_list
-    discount = 0.9
-
-    policy = find_policy(n_states, n_actions, transition_probabilities, reward, discount)
-    print("found policy = ", policy)
-
-
-if __name__ == '__main__':
-    main()
 
 
 

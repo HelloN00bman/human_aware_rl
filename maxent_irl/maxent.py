@@ -1,21 +1,13 @@
-# from dependencies import *
-# from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState, ObjectState, OvercookedState
-# from overcooked_ai_py.planning.planners import MediumLevelPlanner
-# from overcooked_ai_py.mdp.actions import Action, Direction
-# import pdb
-# from state_featurization_for_irl import *
+#
 from state_featurization import run_data_featurization
-# from numba import cuda, float32
 from multiprocessing.pool import ThreadPool as Pool
 
-# from numba import jit, cuda
 
 from itertools import product
 
 import numpy as np
 import numpy.random as rn
 
-import value_iteration
 import policy_iteration
 
 # @cuda.jit
@@ -398,34 +390,6 @@ def find_policy(n_states, r, n_actions, discount,
     Q -= Q.max(axis=1).reshape((n_states, 1))  # For numerical stability.
     Q = np.exp(Q)/np.exp(Q).sum(axis=1).reshape((n_states, 1))
     return Q
-
-def expected_value_difference(n_states, n_actions, transition_probability,
-    reward, discount, p_start_state, optimal_value, true_reward):
-    """
-    Calculate the expected value difference, which is a proxy to how good a
-    recovered reward function is.
-    n_states: Number of states. int.
-    n_actions: Number of actions. int.
-    transition_probability: NumPy array mapping (state_i, action, state_k) to
-        the probability of transitioning from state_i to state_k under action.
-        Shape (N, A, N).
-    reward: Reward vector mapping state int to reward. Shape (N,).
-    discount: Discount factor. float.
-    p_start_state: Probability vector with the ith component as the probability
-        that the ith state is the start state. Shape (N,).
-    optimal_value: Value vector for the ground reward with optimal policy.
-        The ith component is the value of the ith state. Shape (N,).
-    true_reward: True reward vector. Shape (N,).
-    -> Expected value difference. float.
-    """
-
-    policy = value_iteration.find_policy(n_states, n_actions,
-        transition_probability, reward, discount)
-    value = value_iteration.value(policy.argmax(axis=1), n_states,
-        transition_probability, true_reward, discount)
-
-    evd = optimal_value.dot(p_start_state) - value.dot(p_start_state)
-    return evd
 
 
 
