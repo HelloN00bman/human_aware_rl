@@ -6,6 +6,9 @@ from collections import defaultdict
 from stable_baselines import GAIL
 from stable_baselines.gail import ExpertDataset
 
+# import sys
+# sys.path.insert(0, "../../")
+
 from overcooked_ai_py.mdp.actions import Action, Direction
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, OvercookedState
 from overcooked_ai_py.mdp.overcooked_env import OvercookedEnv, DEFAULT_ENV_PARAMS
@@ -14,16 +17,24 @@ from overcooked_ai_py.agents.agent import AgentFromPolicy, AgentPair
 from overcooked_ai_py.planning.planners import MediumLevelPlanner, NO_COUNTERS_PARAMS
 from overcooked_ai_py.utils import save_pickle, load_pickle
 
+from human_aware_rl.utils import reset_tf, set_global_seed, common_keys_equal
 from human_aware_rl.baselines_utils import create_dir_if_not_exists
-from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_from_data
+from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_from_data, get_trajs_from_data_selective, \
+    get_trajs_from_data_for_cross_validation, get_trajs_from_data_specify_groups
 
-BC_SAVE_DIR = "human_aware_rl/data/bc_runs/"
+BC_SAVE_DIR = "../data/bc_runs/"
 
+# DEFAULT_DATA_PARAMS = {
+#     "train_mdps": ["simple"],
+#     "ordered_trajs": True,
+#     "human_ai_trajs": False,
+#     "data_path": "../data/human/anonymized/clean_train_trials.pkl"
+# }
 DEFAULT_DATA_PARAMS = {
-    "train_mdps": ["simple"],
+    "train_mdps": ["unident_s"],
     "ordered_trajs": True,
     "human_ai_trajs": False,
-    "data_path": "human_aware_rl/data/human/anonymized/clean_train_trials.pkl"
+    "data_path": "../data/human/anonymized/clean_main_trials.pkl"
 }
 
 DEFAULT_BC_PARAMS = {
@@ -46,14 +57,95 @@ def init_gym_env(bc_params):
 
 def train_bc_agent(model_save_dir, bc_params, num_epochs=1000, lr=1e-4, adam_eps=1e-8):
     # Extract necessary expert data and save in right format
+    set_global_seed(64)
     expert_trajs = get_trajs_from_data(**bc_params["data_params"])
-    
     # Load the expert dataset
     save_npz_file(expert_trajs, "temp.npz")
+    # Create a stable-baselines ExpertDataset
     dataset = ExpertDataset(expert_path="temp.npz", verbose=1, train_fraction=0.85)
     assert dataset is not None
     assert dataset.train_loader is not None
+
+
+    # Pass the ExpertDataset into BC model and params
+    # Return the BC model
     return bc_from_dataset_and_params(dataset, bc_params, model_save_dir, num_epochs, lr, adam_eps)
+
+def train_bc_agent_cross_validation(is_train, train_workers, test_workers, model_save_dir, bc_params, num_epochs=1000, lr=1e-4, adam_eps=1e-8):
+    # Extract necessary expert data and save in right format
+    set_global_seed(64)
+    expert_trajs = get_trajs_from_data_for_cross_validation(is_train, train_workers, test_workers, **bc_params["data_params"])
+    # Load the expert dataset
+    save_npz_file(expert_trajs, "temp.npz")
+    # Create a stable-baselines ExpertDataset
+    dataset = ExpertDataset(expert_path="temp.npz", verbose=1, train_fraction=0.85)
+    assert dataset is not None
+    assert dataset.train_loader is not None
+
+
+    # Pass the ExpertDataset into BC model and params
+    # Return the BC model
+    return bc_from_dataset_and_params(dataset, bc_params, model_save_dir, num_epochs, lr, adam_eps)
+
+
+
+def train_bc_agent_w_finetuning(selected_workers, model_save_dir, bc_params, num_epochs=1000, lr=1e-4, adam_eps=1e-8):
+    # Random 3
+    # {2: 13, 4: 23, 13: 68, 15: 78, 16: 83, 17: 88, 19: 98, 20: 103}
+    # {1: 8, 3: 18, 10: 53, 11: 58, 12: 63, 18: 93, 22: 113}
+
+    # train_workers = [1,3,10,11,12,18,22] # swap for random3
+    # test_workers = [2,4,13,15,16,17,19,20]
+
+    # AA
+    # {2: 11, 3: 16, 11: 56, 12: 61, 13: 66, 14: 71, 16: 81, 20: 101, 22: 111}
+    # {1: 6, 4: 21, 10: 51, 15: 76, 17: 86, 18: 91, 19: 96, 23: 116}
+    # train_workers = [2, 15, 19, 4, 20, 3, 11, 12, 16]
+    # test_workers = [1, 10, 17, 18, 23, 22, 14, 13]
+    # Strat 0 - 2, 15, 19
+    # Strat 1 - 4, 20
+    # Strat 2 - 3, 11, 12
+    # Strat 3 - 16
+
+    # if 'train' in model_save_dir:
+    #     is_train = True
+    # else:
+    #     is_train = False
+
+    # Extract necessary expert data and save in right format
+    set_global_seed(64)
+    selective = False
+    # is_train = True
+    # expert_trajs = get_trajs_from_data_selective(selected_worker_ids, **bc_params["data_params"])
+    expert_trajs = get_trajs_from_data_specify_groups(selective, selected_workers=None, **bc_params["data_params"])
+    # Load the expert dataset
+    save_npz_file(expert_trajs, "temp.npz")
+    # Create a stable-baselines ExpertDataset
+    dataset = ExpertDataset(expert_path="temp.npz", verbose=1, train_fraction=0.85)
+    assert dataset is not None
+    assert dataset.train_loader is not None
+
+    ## GET DATASET FOR FINETUNING
+    # Extract necessary expert data and save in right format
+    selective = True
+    # is_train = False
+    # expert_trajs = get_trajs_from_data_selective(**bc_params["data_params"])
+    expert_trajs = get_trajs_from_data_specify_groups(selective, selected_workers=selected_workers,
+                                                      **bc_params["data_params"])
+    # Load the expert dataset
+    save_npz_file(expert_trajs, "temp_finetune.npz")
+    # Create a stable-baselines ExpertDataset
+    finetune_dataset = ExpertDataset(expert_path="temp_finetune.npz", verbose=1, train_fraction=0.85)
+    assert finetune_dataset is not None
+    assert finetune_dataset.train_loader is not None
+
+
+    # Pass the ExpertDataset into BC model and params
+    # Return the BC model
+    return bc_w_finetune_from_dataset_and_params(dataset, finetune_dataset, bc_params, model_save_dir, num_epochs, lr, adam_eps)
+
+
+
 
 def bc_from_dataset_and_params(dataset, bc_params, model_save_dir, num_epochs, lr, adam_eps):
     # Setup env
@@ -62,9 +154,28 @@ def bc_from_dataset_and_params(dataset, bc_params, model_save_dir, num_epochs, l
     # Train and save model
     create_dir_if_not_exists(BC_SAVE_DIR + model_save_dir)
 
+    # Create stable-baselines GAIL base model
     model = GAIL("MlpPolicy", gym_env, dataset, verbose=1)
+    # Only pretrain the GAIL model, which is just supervised BC on the ExpertDataset.
     model.pretrain(dataset, n_epochs=num_epochs, learning_rate=lr, adam_epsilon=adam_eps, save_dir=BC_SAVE_DIR + model_save_dir)
 
+    # Save BC Model
+    save_bc_model(model_save_dir, model, bc_params)
+    return model
+
+def bc_w_finetune_from_dataset_and_params(dataset, finetune_dataset, bc_params, model_save_dir, num_epochs, lr, adam_eps):
+    # Setup env
+    gym_env = init_gym_env(bc_params)
+
+    # Train and save model
+    create_dir_if_not_exists(BC_SAVE_DIR + model_save_dir)
+
+    # Create stable-baselines GAIL base model
+    model = GAIL("MlpPolicy", gym_env, dataset, verbose=1)
+    # Only pretrain the GAIL model, which is just supervised BC on the ExpertDataset.
+    model.pretrain_and_finetune(dataset, finetune_dataset, n_epochs=num_epochs, learning_rate=lr, adam_epsilon=adam_eps, save_dir=BC_SAVE_DIR + model_save_dir)
+
+    # Save BC Model
     save_bc_model(model_save_dir, model, bc_params)
     return model
 
@@ -87,17 +198,27 @@ def get_bc_agent_from_model(model, bc_params, no_waits=False):
     mlp = MediumLevelPlanner.from_pickle_or_compute(mdp, NO_COUNTERS_PARAMS, force_compute=False)
     
     def encoded_state_policy(observations, include_waits=True, stochastic=False):
+        # Input observations are a list of featurized states.
+        # Pass the observations of each state into the action probability function of the model.
+        # Returns a list of action probabilities for each observation at every timestep.
         action_probs_n = model.action_probability(observations)
 
+        # If include_waits is False, remove the indices and renormalize. Probably mix maximum action.
         if not include_waits:
             action_probs = ImitationAgentFromPolicy.remove_indices_and_renormalize(action_probs_n, [Action.ACTION_TO_INDEX[Direction.STAY]])
-        
+
+        # If include_waits is True, choose stochastically, could be suboptimal decisions made. Sample based on action probs.
         if stochastic:
             return [np.random.choice(len(action_probs[i]), p=action_probs[i]) for i in range(len(action_probs))]
         return action_probs_n
 
     def state_policy(mdp_states, agent_indices, include_waits, stochastic=False):
         # encode_fn = lambda s: mdp.preprocess_observation(s)
+
+        # Take the set of mdp states. Featurize every mdp state, so that every state is a feature vector (observation).
+        # Add it to a list of observations, turn to numpy array.
+        # Pass set of featurized states to the encoded state policy function.
+
         encode_fn = lambda s: mdp.featurize_state(s, mlp)
 
         obs = []
@@ -112,11 +233,13 @@ def get_bc_agent_from_model(model, bc_params, no_waits=False):
 
 def eval_with_benchmarking_from_model(n_games, model, bc_params, no_waits, display=False):
     bc_params = copy.deepcopy(bc_params)
+    # Both agents are the same model, same params
     a0 = get_bc_agent_from_model(model, bc_params, no_waits)
     a1 = get_bc_agent_from_model(model, bc_params, no_waits)
     del bc_params["data_params"], bc_params["mdp_fn_params"]
     a_eval = AgentEvaluator(**bc_params)
     ap = AgentPair(a0, a1)
+    # Get rollouts from playing both agents (identical agents) with each other.
     trajectories = a_eval.evaluate_agent_pair(ap, num_games=n_games, display=display)
     return trajectories
 
@@ -141,16 +264,26 @@ def plot_bc_run(run_info, num_epochs):
     plt.legend()
     plt.show()
 
+def plot_bc_run_modified(run_info, num_epochs, seed_idx, seed):
+    xs = range(0, num_epochs, max(int(num_epochs / 10), 1))
+    plt.plot(xs, run_info['train_losses'], label="train loss")
+    plt.plot(xs, run_info['val_losses'], label="val loss")
+    plt.plot(xs, run_info['val_accuracies'], label="val accuracy")
+    plt.legend()
+    plt.savefig('../../exploration_images/bc_run_seedidx'+str(seed_idx)+'_seed'+str(seed)+'.png')
+    plt.close()
+
 
 class ImitationAgentFromPolicy(AgentFromPolicy):
     """Behavior cloning agent interface"""
-
+    #
     def __init__(self, state_policy, direct_policy, mlp=None, stochastic=True, no_waits=False, stuck_time=3):
         super().__init__(state_policy, direct_policy)
         # How many turns in same position to be considered 'stuck'
         self.stuck_time = stuck_time
         self.history_length = stuck_time + 1
         self.stochastic = stochastic
+
         self.action_probs = False
         self.no_waits = no_waits
         self.will_unblock_if_stuck = False if stuck_time == 0 else True
@@ -204,7 +337,20 @@ class ImitationAgentFromPolicy(AgentFromPolicy):
             if self.stochastic:
                 action_idx = np.random.choice(len(curr_agent_action_probs), p=curr_agent_action_probs)
             else:
+                # curr_agent_action_probs /= sum(curr_agent_action_probs)
+                # if np.sum(curr_agent_action_probs) != 0:
+                #     curr_agent_action_probs /= np.sum(curr_agent_action_probs)
+                # else:
+                #     curr_agent_action_probs /= 0.0000001
+
+                # print("\n\ncurr_agent_action_probs", curr_agent_action_probs)
                 action_idx = np.argmax(curr_agent_action_probs)
+
+                # max_action_prob = np.max(curr_agent_action_probs)
+                # if max_action_prob < 0.5:
+                #     action_idx = 4
+                # print("selected action idx = ", action_idx)
+
             curr_agent_action = Action.INDEX_TO_ACTION[action_idx]
             self.add_to_history(curr_agent_state, curr_agent_action)
 
@@ -240,6 +386,10 @@ class ImitationAgentFromPolicy(AgentFromPolicy):
 
     @staticmethod
     def remove_indices_and_renormalize(probs, indices):
+        # This will induce random lack of movement
+        # If include_waits = False, run this function.
+        # If probs is more than 1 dimensional: more than 1 action, or more than 1 timestep
+        #
         if len(np.array(probs).shape) > 1:
             probs = np.array(probs)
             for row_idx, row in enumerate(indices):
@@ -267,6 +417,10 @@ class ImitationAgentFromPolicy(AgentFromPolicy):
     def reset(self):
         # Matrix of histories, where each index/row corresponds to a specific agent
         self.history = defaultdict(lambda: [None] * self.history_length)
+
+
+
+
 
 
 ##########
