@@ -125,6 +125,25 @@ def onehot_encode_actions(hl_actions):
         all_onehot.append(onehot)
     return all_onehot
 
+def align_actions1(times, hl_actions):
+    """
+    Uses the stategy of backpropogating actions and making one data point per timestep
+    """
+    last_action = max(times[0][-1], times[1][-1])
+    actions_full = np.zeros((2, last_action))
+    
+    # fill with known actions
+    for i, times_agent in enumerate(times):
+        for j, t in enumerate(times_agent):
+            actions_full[i, t] = hl_actions[i][j]
+
+    # propogate known actions backward in time
+    next_actions = [times[0][-1], times[1][-1]]
+    for i in range(last_action, 0, -1):
+        # TODO
+        pass
+
+
 def process_pkl(filepath="../human_aware_rl/data/human/anonymized/clean_train_trials.pkl"):
     pkl_file = open(filepath, "rb")
     df = pickle.load(pkl_file)
