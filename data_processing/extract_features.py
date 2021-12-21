@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pickle
 import json
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedState, PlayerState, OvercookedGridworld, ObjectState
+import ipdb
 
 def get_player_states(state, grid):
     # NOTE: unused right now
@@ -90,7 +91,7 @@ def extract_hl_actions(data):
     t = 0
     for index, row in data.iterrows():
         if grid is None:
-            grid = OvercookedGridworld.from_grid(eval(row["layout"]))
+            grid = OvercookedGridworld.from_grid(eval(row["layout"]), base_layout_params={"layout_name": row["layout_name"]})
         # don't care about movement actions, we only need to split on "interact" actions
         state = eval(row["state"])
         next_state = eval(row["next_state"])
@@ -130,7 +131,7 @@ def align_actions1(times, hl_actions):
     Uses the stategy of backpropogating actions and making one data point per timestep
     """
     last_action = max(times[0][-1], times[1][-1])
-    actions_full = np.zeros((2, last_action))
+    actions_full = -np.ones((2, last_action+1)) # +1 because of 0-indexing
     
     # fill with known actions
     for i, times_agent in enumerate(times):
@@ -138,23 +139,47 @@ def align_actions1(times, hl_actions):
             actions_full[i, t] = hl_actions[i][j]
 
     # propogate known actions backward in time
-    next_actions = [times[0][-1], times[1][-1]]
-    for i in range(last_action, 0, -1):
-        # TODO
-        pass
+    next_actions = [hl_actions[0][-1], hl_actions[1][-1]]
+    for i in range(last_action, -1, -1):
+        for player_idx in [0,1]:
+            if actions_full[player_idx][i] == -1:
+                actions_full[player_idx][i] = next_actions[player_idx]
+            else:
+                next_actions[player_idx] = actions_full[player_idx][i]
+
+    return actions_full
 
 
 def process_pkl(filepath="../human_aware_rl/data/human/anonymized/clean_train_trials.pkl"):
     pkl_file = open(filepath, "rb")
     df = pickle.load(pkl_file)
 
+    trial_data_with_hl_actions = []
+
     for trial_id in df.workerid_num.unique():
         for layout_id in df.layout_name.unique():
             trial_data = df[(df.workerid_num == trial_id) & (df.layout_name == layout_id)]
             trial_data = trial_data.sort_values('cur_gameloop')
+            if len(trial_data) == 0:
+                continue
 
             times, hl_actions, state_encodings = extract_hl_actions(trial_data)
-            onehot_hl_actions = onehot_encode_actions(hl_actions)
+            all_hl_actions = align_actions1(times, hl_actions)
+            onehot_hl_actions = onehot_encode_actions(all_hl_actions.astype(int))
+            # merge for joint action
+            onehot_hl_actions = np.hstack(onehot_hl_actions)
+            # fill in the remaining timesteps with zeros (no high-level action taken)
+            len_hl, n_actions = onehot_hl_actions.shape
+            extras = np.zeros((len(trial_data)-len_hl, n_actions))
+            onehot_hl_actions = np.vstack((onehot_hl_actions, extras))
+            # save HL actions back into dataframes
+            trial_data["high_level_action"] = list(onehot_hl_actions)
+            trial_data_with_hl_actions.append(trial_data)
+    
+    # save data with high level actions added in
+    new_df = pd.concat(trial_data_with_hl_actions)
+    with open('../human_aware_rl/data/human/anonymized/clean_train_trials_hl.pkl', 'wb') as handle:
+        pickle.dump(new_df, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 if __name__ == "__main__":
     process_pkl()
