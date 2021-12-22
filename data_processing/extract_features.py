@@ -6,6 +6,11 @@ import json
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedState, PlayerState, OvercookedGridworld, ObjectState
 import ipdb
 
+def json_eval(s):
+    json_acceptable_string = s.replace("'", "\"")
+    d = json.loads(json_acceptable_string)
+    return d
+
 def get_player_states(state, grid):
     # NOTE: unused right now
     players = []
@@ -82,6 +87,21 @@ def create_obj_states(objects):
     return obj
 
 def extract_hl_actions(data):
+    layout_name_to_data_name = {
+        "random0": "random0",
+        "random1": "coordination_ring",
+        "simple": "cramped_room",
+        "unident_s": "asymmetric_advantages",
+        "random3": "random3"
+    }
+    data_name_to_layout_name = {
+        "random0": "random0",
+        "coordination_ring": "random1",
+        "cramped_room": "simple",
+        "asymmetric_advantages": "unident_s",
+        "random3": "random3"
+    }
+
     data = data.sort_values('time_elapsed')
     times = data.cur_gameloop
     grid = None
@@ -91,20 +111,27 @@ def extract_hl_actions(data):
     t = 0
     for index, row in data.iterrows():
         if grid is None:
-            grid = OvercookedGridworld.from_grid(eval(row["layout"]), base_layout_params={"layout_name": row["layout_name"]})
+            name = data_name_to_layout_name[row["layout_name"]]
+            grid = OvercookedGridworld.from_grid(eval(row["layout"]), base_layout_params={"layout_name": name})
         # don't care about movement actions, we only need to split on "interact" actions
-        state = eval(row["state"])
-        next_state = eval(row["next_state"])
+        state = json_eval(row["state"])
+        # next_state = json_eval(row["next_state"])
+        try:
+            next_state = json_eval(data[data.cur_gameloop == (row.cur_gameloop+1)].state.to_numpy()[0])
+        except:
+            # TODO: make this less hacky, this will skip the last timestep since we have no next state
+            continue
         
         # NOTE: loading PlayerState from dict errors if held_object key does not exist
         fix_held_obj(state)
         fix_held_obj(next_state)
         player_states = [PlayerState.from_dict(state["players"][player]) for player in range(2)] 
-        objects = create_obj_states(state["objects"])
+        # objects = create_obj_states(state["objects"])
         # NOTE: using from_dict fails because state dict contains extra key 'pot_explosion'
-        state_obj = OvercookedState(players=player_states, 
-                                    objects=objects, 
-                                    order_list=state["order_list"])
+        # state_obj = OvercookedState(players=player_states, 
+        #                             objects=objects, 
+        #                             order_list=state["order_list"])
+        state_obj = OvercookedState.from_dict(state)
         state_encoding = grid.lossless_state_encoding(state_obj)
         state_encodings.append(state_encoding)
         for player in range(2):
@@ -122,7 +149,8 @@ def onehot_encode_actions(hl_actions):
     for actions in hl_actions:
         onehot = np.zeros((len(actions), N_ACTIONS))
         for idx, a in enumerate(actions):
-            onehot[idx, a] = 1
+            if a != -1:
+                onehot[idx, a] = 1
         all_onehot.append(onehot)
     return all_onehot
 
@@ -130,7 +158,17 @@ def align_actions1(times, hl_actions):
     """
     Uses the stategy of backpropogating actions and making one data point per timestep
     """
-    last_action = max(times[0][-1], times[1][-1])
+    last_actions = [-1,-1]
+    for player_idx in [0, 1]:
+        if len(hl_actions[player_idx]) == 0:
+            continue
+        last_actions[player_idx] = times[player_idx][-1]
+    # if neither player took any actions, return empty array
+    if last_actions == [-1, -1]:
+        return np.zeros((2, 0))
+
+    # last_action = max(times[0][-1], times[1][-1])
+    last_action = max(last_actions[0], last_actions[1])
     actions_full = -np.ones((2, last_action+1)) # +1 because of 0-indexing
     
     # fill with known actions
@@ -139,26 +177,29 @@ def align_actions1(times, hl_actions):
             actions_full[i, t] = hl_actions[i][j]
 
     # propogate known actions backward in time
-    next_actions = [hl_actions[0][-1], hl_actions[1][-1]]
-    for i in range(last_action, -1, -1):
-        for player_idx in [0,1]:
+    for player_idx in [0, 1]:
+        if len(hl_actions[player_idx]) == 0:
+            continue
+        next_action = hl_actions[player_idx][-1]
+        for i in range(last_actions[player_idx], -1, -1):
             if actions_full[player_idx][i] == -1:
-                actions_full[player_idx][i] = next_actions[player_idx]
+                actions_full[player_idx][i] = next_action
             else:
-                next_actions[player_idx] = actions_full[player_idx][i]
+                next_action = actions_full[player_idx][i]
 
     return actions_full
 
 
-def process_pkl(filepath="../human_aware_rl/data/human/anonymized/clean_train_trials.pkl"):
+def process_pkl():
+    filepath = "../human_aware_rl/static/human_data/cleaned/2019_hh_trials_all.pickle"
     pkl_file = open(filepath, "rb")
     df = pickle.load(pkl_file)
 
     trial_data_with_hl_actions = []
 
-    for trial_id in df.workerid_num.unique():
+    for trial_id in df.trial_id.unique():
         for layout_id in df.layout_name.unique():
-            trial_data = df[(df.workerid_num == trial_id) & (df.layout_name == layout_id)]
+            trial_data = df[(df.trial_id == trial_id) & (df.layout_name == layout_id)]
             trial_data = trial_data.sort_values('cur_gameloop')
             if len(trial_data) == 0:
                 continue
@@ -178,7 +219,7 @@ def process_pkl(filepath="../human_aware_rl/data/human/anonymized/clean_train_tr
     
     # save data with high level actions added in
     new_df = pd.concat(trial_data_with_hl_actions)
-    with open('../human_aware_rl/data/human/anonymized/clean_train_trials_hl.pkl', 'wb') as handle:
+    with open('../human_aware_rl/static/human_data/cleaned/2019_hh_trials_all_hl.pickle', 'wb') as handle:
         pickle.dump(new_df, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 if __name__ == "__main__":
