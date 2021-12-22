@@ -1,5 +1,6 @@
 #
-from state_featurization import run_data_featurization
+# from state_featurization import run_data_featurization
+from state_featurization import run_data_featurization_with_hl as run_data_featurization
 from multiprocessing.pool import ThreadPool as Pool
 
 
@@ -435,7 +436,8 @@ if __name__ == '__main__':
 
 
     layout_to_run = "random0"
-    teams_list = [79]
+    # teams_list = [79]
+    teams_list = [22]
     main(layout_name=layout_to_run, teams_list=teams_list)
 
 
