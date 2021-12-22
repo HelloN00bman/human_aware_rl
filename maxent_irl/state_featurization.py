@@ -80,11 +80,6 @@ N_UNIQUE_STATES = 4672
 # 18. East is wall?
 # 19. West is wall?
 # 20. Facing direction wall is empty counter?
-#
-# import sys, os
-# import pickle
-# sys.path.insert(0, "../../")
-
 
 from dependencies import *
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState, ObjectState, OvercookedState
@@ -104,7 +99,7 @@ def import_2019_data():
     return old_trials
 
 def import_clean_data():
-    humans_clean_file = pd.read_pickle("../human_aware_rl/data/human/anonymized/clean_train_trials_hl.pkl")
+    humans_clean_file = pd.read_pickle("../human_aware_rl/static/human_data/cleaned/2019_hh_trials_all_hl.pickle")
     return humans_clean_file
 
 def run_data_featurization(layout_name, team_list, N_FEATURES = 7):
@@ -359,6 +354,10 @@ def run_data_featurization(layout_name, team_list, N_FEATURES = 7):
     return trial_state_seq, trial_action_seq, trial_feature_seq, transition_matrix, state_idx_to_state, state_tuple_to_state_idx, state_reward_list, feature_matrix, trajectories
 
 def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
+    # FOR RANDOM 0
+    #     all_workers = [15, 22]
+    #     all_workers = [2, 4, 17, 19]
+
     name = layout_name
     layout_name_to_data_name = {
         "random0": "random0",
@@ -370,10 +369,9 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
     }
 
     old_trials = import_clean_data()
-    trial_key = 'workerid_num'
-    layout_trials = old_trials[old_trials['layout_name'] == layout_name_to_data_name[name]][trial_key].unique()
-    layout_data = old_trials[old_trials['layout_name'] == layout_name_to_data_name[name]]
-    layout = eval(layout_data.layout.unique()[0])
+    # print("old_trials", old_trials)
+    layout_trials = old_trials[old_trials['layout_name'] == layout_name_to_data_name[name]]['trial_id'].unique()
+
     trial_hl_actions_seq = []
 
     trial_state_seq = []
@@ -383,15 +381,17 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
     all_states = []
     all_possible_joint_actions = []
 
-    min_traj_length = np.inf
+    min_traj_length = 10000000000
+    # for trial_id in [79, 114]:
     for j in range(len(layout_trials)):
         trial_id = layout_trials[j]
         if trial_id not in team_list:
             continue
-        trial_df = old_trials[old_trials[trial_key] == trial_id]
+        trial_df = old_trials[old_trials['trial_id'] == trial_id]
         state_data = trial_df['state'].values
         if len(state_data) < min_traj_length:
             min_traj_length = len(state_data)
+    # print("layout_trials", layout_trials)
     min_traj_length = 200
     print("min_traj_length", min_traj_length)
 
@@ -399,10 +399,9 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
         trial_id = layout_trials[j]
         if trial_id not in team_list:
             continue
-        trial_df = old_trials[(old_trials[trial_key] == trial_id) & (old_trials['layout_name'] == layout_name_to_data_name[name])]
+        trial_df = old_trials[old_trials['trial_id'] == trial_id]
 
-        # score = old_trials[old_trials[trial_key] == trial_id]['score'].to_numpy()[-1]
-        score = trial_df['score'].to_numpy()[-1]
+        score = old_trials[old_trials['trial_id'] == trial_id]['score'].to_numpy()[-1]
         state_data = trial_df['state'].values
         joint_actions = trial_df['joint_action'].values
         time_elapsed = trial_df['time_elapsed'].values
@@ -418,9 +417,7 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
 
         hl_action_seq = []
 
-        # overcooked_mdp = OvercookedGridworld.from_layout_name(name, start_order_list=['any'], cook_time=20)
-        overcooked_mdp = OvercookedGridworld.from_grid(layout, base_layout_params={'layout_name': name, 'start_order_list': ['any'], 'cook_time': 20})
-
+        overcooked_mdp = OvercookedGridworld.from_layout_name(name, start_order_list=['any'], cook_time=20)
         base_params_start_or = {
             'start_orientations': True,
             'wait_allowed': False,
@@ -432,15 +429,12 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
         mlp = MediumLevelPlanner(overcooked_mdp, base_params_start_or)
 
         for state_i in range(1, min_traj_length):
-            # overcooked_state_i = OvercookedState.from_dict(json_eval(state_data[state_i]))
-            state_dict = eval(state_data[state_i])
-            if type(state_dict["objects"]) != list:
-                if state_dict["objects"] == {}:
-                    state_dict["objects"] = []
-                else:
-                    state_dict["objects"] = [v for k, v in state_dict["objects"].items()]
-            overcooked_state_i = OvercookedState.from_dict(state_dict)
+            # print("json_eval(state_data[state_i])", json_eval(state_data[state_i]))
+            overcooked_state_i = OvercookedState.from_dict(json_eval(state_data[state_i]))
+            # overcooked_state_i = state_data[state_i] # for fixed
+            # featurized_state_i = featurize_state(overcooked_state_i)
             prev_joint_action_eval = json_eval(joint_actions[state_i - 1])
+            # prev_joint_action_eval = joint_actions[state_i-1] # for fixed
             prev_joint_action = []
             for elem in prev_joint_action_eval:
                 if tuple(elem) !=  ('I', 'N', 'T', 'E', 'R', 'A', 'C', 'T') and tuple(elem) !=  ('i', 'n', 't', 'e', 'r', 'a', 'c', 't'):
@@ -458,7 +452,6 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
                     joint_action.append("interact")
 
             joint_hl_action = joint_hl_onehot_actions[state_i]
-
             team_features = overcooked_mdp.featurize_state_for_irl(overcooked_state_i, mlp, prev_joint_action)
 
             player_idx_to_high_level_action, reward_featurized_state, sparse_reward = overcooked_mdp.get_high_level_interact_action(overcooked_state_i, joint_action, n_features=N_FEATURES)
@@ -491,14 +484,10 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
     joint_stay_action = (HL_ACTION_TO_ACTION_IDX[STAY_IN_PLACE], HL_ACTION_TO_ACTION_IDX[STAY_IN_PLACE])
     all_possible_joint_actions.append(joint_stay_action)
 
-
-    # unique_joint_actions, unique_joint_actions_counts = np.unique(all_possible_joint_actions, axis=0, return_counts=True)
     unique_joint_actions = list(set(all_possible_joint_actions))
 
     n_unique_joint_actions = len(unique_joint_actions)
     joint_idx_to_action, joint_action_to_idx = {}, {}
-    # joint_idx_to_action = {idx: act for idx, act in enumerate(unique_joint_actions)}
-    # joint_action_to_idx = {act: idx for idx, act in enumerate(unique_joint_actions)}
     for u_idx in range(len(unique_joint_actions)):
         joint_idx_to_action[u_idx] = tuple(unique_joint_actions[u_idx])
         joint_action_to_idx[tuple(unique_joint_actions[u_idx])] = u_idx
@@ -540,6 +529,7 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
             state_to_feature[s] = featurized_state_s
             state_to_feature[sp] = featurized_state_sp
 
+
         trajectories.append(np.array(add_to_trajectory))
 
     state_reward_list = []
@@ -562,13 +552,10 @@ def run_data_featurization_with_hl(layout_name, team_list, N_FEATURES = 7):
 def main():
     state_seq, action_seq, feature_seq, transition_matrix, state_idx_to_state, state_tuple_to_state_idx, state_reward_list, feature_matrix, trajectories = run_featurization()
 
-
     print("state_seq shape", state_seq.shape)
     print('action_seq shape', action_seq.shape)
     print("feature_seq.shape = ", feature_seq.shape)
     # print(feature_seq)
-
-
 
 
 if __name__ == '__main__':

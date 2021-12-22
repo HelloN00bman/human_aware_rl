@@ -430,14 +430,9 @@ def main(layout_name, teams_list):
     print("feature_weights", feature_weights)
 
 
-
-
 if __name__ == '__main__':
-
-
     layout_to_run = "random0"
-    # teams_list = [79]
-    teams_list = [22]
+    teams_list = [79]
     main(layout_name=layout_to_run, teams_list=teams_list)
 
 
