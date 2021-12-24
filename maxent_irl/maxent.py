@@ -8,6 +8,7 @@ from itertools import product
 
 import numpy as np
 import numpy.random as rn
+import pickle
 
 import policy_iteration
 
@@ -429,6 +430,9 @@ def main(layout_name, teams_list):
     print("found irl_results = ", irl_results)
     print("feature_weights", feature_weights)
 
+    # saving learned weights to file
+    with open('./irl_weights_'+layout_name + '_' + str(teams_list) + '.pkl', 'wb') as handle:
+        pickle.dump(feature_weights, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
 if __name__ == '__main__':
     layout_to_run = "random0"

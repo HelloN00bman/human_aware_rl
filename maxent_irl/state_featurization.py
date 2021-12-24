@@ -2,7 +2,6 @@ from dependencies import *
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState, ObjectState, OvercookedState
 from overcooked_ai_py.planning.planners import MediumLevelPlanner
 from overcooked_ai_py.mdp.actions import Action, Direction
-import ipdb
 
 #
 # from overcooked_ai_py.agents.agent import DualPotAgent, FixedStrategy_AgentPair, SinglePotAgent
