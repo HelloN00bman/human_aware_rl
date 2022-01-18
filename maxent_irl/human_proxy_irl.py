@@ -3,7 +3,6 @@ import pickle
 
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState, ObjectState, OvercookedState
 from overcooked_ai_py.planning.planners import MotionPlanner, MediumLevelPlanner
-import ipdb
 
 def get_irl_weights(layout_name, teams_list):
     filename = './irl_weights_'+layout_name + '_' + str(teams_list) + '.pkl'
@@ -32,6 +31,13 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
     p1 = state.players[0]
     p1_pos_or = (p1.position, p1.orientation)
     # TODO: finish writing all hl action goal-finding functions
+    # NOTE: this code is WIP for hl_action == 3
+    pot_states_dict = mdp.get_pot_states(state)
+    ready_pot_locations = pot_states_dict['onion']['ready'] + pot_states_dict['tomato']['ready']
+    nearly_ready_pot_locations = pot_states_dict['onion']['cooking'] + pot_states_dict['tomato']['cooking']
+    partially_full_pots = pot_states_dict['tomato']['partially_full'] + pot_states_dict['onion']['partially_full']
+    nearly_ready_pot_locations = nearly_ready_pot_locations + pot_states_dict['empty'] + partially_full_pots
+    goal_locs = ready_pot_locations + nearly_ready_pot_locations
     if hl_action == 0:
         # pick up onion
         # find dispenser locations
@@ -45,12 +51,30 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
                 return goal_pos_or
     elif hl_action == 1:
         # pick up dish
-        pass
+        locs = mdp.get_dish_dispenser_locations()
+        counter_objects = mdp.get_counter_objects_dict(state)
+        goal_locs = mdp.ml_action_manager.pickup_dish_actions(state, counter_objects)
+
+        # check if any of these locations are valid
+        for goal_pos_or in goal_locs:
+            if planner.is_valid_motion_start_goal_pair(p1_pos_or, goal_pos_or):
+                return goal_pos_or
     elif hl_action == 2:
         # pick up soup (from counter)
-        pass
+        counter_objects = mdp.get_counter_objects_dict(state)
+        goal_locs = []
+        for obj_name, locs in counter_objects.items():
+            if obj_name == 'dish' and len(locs) > 0:
+                # pick the first dish as goal location
+                goal_locs = locs
+                break
+        # check if any of these locations are valid
+        for goal_pos_or in goal_locs:
+            if planner.is_valid_motion_start_goal_pair(p1_pos_or, goal_pos_or):
+                return goal_pos_or
     elif hl_action == 3:
         # get cooked soup (from pot)
+        # TODO: make sure this action is only picked we're already holding a plate
         pass
     elif hl_action == 4:
         # put down onion (on counter)
