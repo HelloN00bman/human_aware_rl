@@ -28,7 +28,7 @@ def is_adjacent_to_serve(state, player, grid):
     
     return any((np.add(player_loc, player_dir) == serve_locs).all(axis=1))
 
-N_ACTIONS = 8
+N_ACTIONS = 9
 def get_hl_action(state, next_state, player, grid):
     # only getting the difference in held items
     # possible held items: onion, soup, dish
@@ -51,6 +51,7 @@ def get_hl_action(state, next_state, player, grid):
     # 5: put down dish
     # 6: put down soup (on counter)
     # 7: serve soup
+    # 8: put onion in pot
 
     if (curr_item is None) and (next_item == "onion"):
         return 0
@@ -61,6 +62,9 @@ def get_hl_action(state, next_state, player, grid):
     elif curr_item == "dish" and next_item == "soup":
         return 3
     elif curr_item == "onion" and next_item is None:
+        # split based on if onion was put in pot or counter
+        if is_adjacent_to_serve(state, player, grid):
+            return 8
         return 4
     elif curr_item == "dish" and next_item is None:
         return 5
