@@ -37,7 +37,6 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
         # pick up onion (from dispenser or counter)
         counter_objects = mdp.get_counter_objects_dict(state)
         goal_locs = mlp.ml_action_manager.pickup_onion_actions(state, counter_objects)
-
         # check if any of these locations are valid
         for goal_pos_or in goal_locs:
             if planner.is_valid_motion_start_goal_pair(p1_pos_or, goal_pos_or):
@@ -105,11 +104,12 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
         raise ValueError(f"unrecognized high level action {hl_action}")
 
     # TODO: if we didn't find a valid goal position, just return the player's current position back
-    raise ValueError("didn't find valid goal")
+    # raise ValueError("didn't find valid goal")
     return p1_pos_or
 
 def plan(layout_name, teams_list, n_actions=8):
     irl_weights = get_irl_weights(layout_name, teams_list)
+    layout_name = "random1" # TODO: get rid of this after debugging
     # construct the gridworld
     overcooked_mdp = OvercookedGridworld.from_layout_name(layout_name, start_order_list=['any'], cook_time=20)
     base_params_start_or = {
@@ -120,17 +120,37 @@ def plan(layout_name, teams_list, n_actions=8):
         'counter_pickup': [],
         'same_motion_goals': False
     }
-    mlp = MediumLevelPlanner(overcooked_mdp, base_params_start_or)
+    mlp = MediumLevelPlanner.from_action_manager_file("random1_am.pkl")
+    mlp.ml_action_manager.counter_drop = overcooked_mdp.terrain_pos_dict['X'] # TODO: save ml_action_manager file to include this
+    # mlp = MediumLevelPlanner(overcooked_mdp, base_params_start_or)
     planner = MotionPlanner(overcooked_mdp)
-    start_state = overcooked_mdp.get_standard_start_state()
-    
-    best_action = get_best_hl_action(overcooked_mdp, mlp, start_state, irl_weights, n_actions)
-    goal_pos_or = get_goal_state(overcooked_mdp, mlp, start_state, best_action, planner)
-    p1 = start_state.players[0]
-    p1_pos_or = (p1.position, p1.orientation)
-    # create motion plan to goal state
-    action_plan, pos_and_or_path, cost = planner.get_plan(p1_pos_or, goal_pos_or)
-    # TODO: do this in a loop, updating the players' & mdp state as appropriate
+    state = overcooked_mdp.get_standard_start_state()
+
+    action_plan = []
+    for t in range(100): # we have no other termination condition here
+        if action_plan == []:
+            best_action = get_best_hl_action(overcooked_mdp, mlp, state, irl_weights, n_actions)
+            goal_pos_or = get_goal_state(overcooked_mdp, mlp, state, best_action, planner)
+            p1 = state.players[0]
+            p1_pos_or = (p1.position, p1.orientation)
+            # create motion plan to goal state
+            # TODO: make less hacky solution--get_plan() throws a KeyError when planning to a location that
+            # isnt a motion goal (generally motion goals are adjacent to counters), which the human's current
+            # position may not be
+            try:
+                action_plan, pos_and_or_path, cost = planner.get_plan(p1_pos_or, goal_pos_or)
+            except:
+                action_plan = [(0,0)] # stay in place
+
+        if action_plan == []:
+            action = (0,0)
+        else:
+            action = action_plan.pop(0)
+        # TODO: decide what we should do if the other agent is in the way of the human (or the human 
+        # is otherwise blocked from executing this plan)
+        p2_action = (0,0)
+        state, sparse_reward, shaped_reward = overcooked_mdp.get_state_transition(state, (action, p2_action))
+    ipdb.set_trace()
 
 def test_hl_action_planning(layout_name="random0"):
     overcooked_mdp = OvercookedGridworld.from_layout_name(layout_name, start_order_list=['any'], cook_time=20)
@@ -152,11 +172,9 @@ def test_hl_action_planning(layout_name="random0"):
 
     print(overcooked_mdp.state_string(start_state))
     print(goal_pos)
-    ipdb.set_trace()
 
 if __name__ == "__main__":
-    # layout_name = "random0"
-    # teams_list = [79]
-    # plan(layout_name, teams_list)
-    test_hl_action_planning("random1")
+    layout_name = "random0"
+    teams_list = [79]
+    plan(layout_name, teams_list)
 
