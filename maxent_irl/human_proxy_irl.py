@@ -55,7 +55,6 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
         # pick up soup (from counter)
         counter_objects = mdp.get_counter_objects_dict(state)
         goal_locs = mlp.ml_action_manager.pickup_counter_soup_actions(state, counter_objects)
-
         # check if any of these locations are valid
         for goal_pos_or in goal_locs:
             if planner.is_valid_motion_start_goal_pair(p1_pos_or, goal_pos_or):
@@ -64,15 +63,7 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
         # get cooked soup (from pot)
         # TODO: make sure this action is only picked we're already holding a plate
         pot_states_dict = mdp.get_pot_states(state)
-        ready_pot_locations = pot_states_dict['onion']['ready'] + pot_states_dict['tomato']['ready']
-        nearly_ready_pot_locations = pot_states_dict['onion']['cooking'] + pot_states_dict['tomato']['cooking']
-        partially_full_pots = pot_states_dict['tomato']['partially_full'] + pot_states_dict['onion']['partially_full']
-        nearly_ready_pot_locations = nearly_ready_pot_locations + pot_states_dict['empty'] + partially_full_pots
-        goal_locs = ready_pot_locations + nearly_ready_pot_locations
-
-        print(mdp.state_string(state))
-        print(goal_locs)
-        ipdb.set_trace()
+        goal_locs = mlp.ml_action_manager.pickup_soup_with_dish_actions(pot_states_dict, only_nearly_ready=True)
 
         # check if any of these locations are valid
         for goal_pos_or in goal_locs:
@@ -84,7 +75,10 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
         # 4: put onion down on counter
         # 5: put dish down on counter
         # 6: put soup down on counter
-        goal_locs = mdp.ml_action_manager.place_obj_on_counter_actions(state)
+        # TODO: do we need additional intelligence to determine which type of counter to place on?
+        # e.g. a shared counter location vs others
+        # TODO: decide if we should collapse these into a single action: "put down held object"
+        goal_locs = mlp.ml_action_manager.place_obj_on_counter_actions(state)
 
         # check if any of these locations are valid
         for goal_pos_or in goal_locs:
@@ -150,9 +144,12 @@ def test_hl_action_planning(layout_name="random0"):
     }
     # mlp = MediumLevelPlanner(overcooked_mdp, base_params_start_or)
     mlp = MediumLevelPlanner.from_action_manager_file("random1_am.pkl")
-    planner = MotionPlanner(overcooked_mdp)
-    start_state = get_start_state("pick_up_soup", layout_name=layout_name)
-    goal_pos = get_goal_state(overcooked_mdp, mlp, start_state, 2, planner)
+    mlp.ml_action_manager.counter_drop = overcooked_mdp.terrain_pos_dict['X'] # TODO: save ml_action_manager file to include this
+    planner = MotionPlanner(overcooked_mdp, counter_goals=overcooked_mdp.terrain_pos_dict['X'])
+    start_state = get_start_state("put_down_onion", layout_name=layout_name)
+    
+    goal_pos = get_goal_state(overcooked_mdp, mlp, start_state, 8, planner)
+
     print(overcooked_mdp.state_string(start_state))
     print(goal_pos)
     ipdb.set_trace()
