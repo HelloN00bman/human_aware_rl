@@ -260,28 +260,53 @@ class IRL_Agent(object):
             action = Action.INDEX_TO_ACTION[action_i]
         return action
 
+    def _graph_from_grid_include_partner(self, planner, p2_pos_or):
+        """Creates a graph adjacency matrix from an Overcooked MDP class."""
+        # State decoder is a dictionary.
+        # For all valid player positions and orientations, insert into the state decoder.
+        # State decoder takes form -- Counter ID: player ( position, orientation )
+        # Position encoder takes form -- player ( position, orientation ): Counter ID
+        # Max counter ID = num of graph nodes
+
+        state_decoder = {}
+        for state_index, motion_state in enumerate(planner.mdp.get_valid_player_positions_and_orientations()):
+            state_decoder[state_index] = motion_state
+
+        pos_encoder = {motion_state: state_index for state_index, motion_state in state_decoder.items()}
+        num_graph_nodes = len(state_decoder)
+
+        adjacency_matrix = np.zeros((num_graph_nodes, num_graph_nodes))
+        for state_index, start_motion_state in state_decoder.items():
+            # For each possible next state that the player can be in given an action.
+            # action = id, successor_motion_state = (new_pos, new_orientation)
+            if start_motion_state[0] != p2_pos_or[0]: # don't include other player's state in graph
+                for action, successor_motion_state in planner._get_valid_successor_motion_states(start_motion_state):
+                    adj_pos_index = pos_encoder[successor_motion_state]
+                    if successor_motion_state[0] != p2_pos_or[0]: # don't include other player's state as valid transition
+                        adjacency_matrix[state_index][adj_pos_index] = planner._graph_action_cost(action)
+                        # An action can take you from one state to the next, given the cost of the action.
+
+        return Graph(adjacency_matrix, pos_encoder, state_decoder)
+
     def get_action_plan(self, state):
+        best_action = get_best_hl_action(self.mdp, self.mlp, state, self.irl_weights, self.n_actions)
+        goal_pos_or = get_goal_state(self.mdp, self.mlp, state, best_action, self.planner)
+        p1 = state.players[self.agent_index]
+        p1_pos_or = (p1.position, p1.orientation)
+        other_agent = 1 - self.agent_index
+        p2 = state.players[other_agent]
+        p2_pos_or = (p2.position, p2.orientation)
 
-        action_plan = []
-        for t in range(100):  # we have no other termination condition here
-            if action_plan == []:
-                best_action = get_best_hl_action(self.mdp, self.mlp, state, self.irl_weights, self.n_actions)
-                goal_pos_or = get_goal_state(self.mdp, self.mlp, state, best_action, self.planner)
-                p1 = state.players[self.agent_index]
-                p1_pos_or = (p1.position, p1.orientation)
-                # create motion plan to goal state
-                # TODO: make less hacky solution--get_plan() throws a KeyError when planning to a location that
-                # isnt a motion goal (generally motion goals are adjacent to counters), which the human's current
-                # position may not be
-                try:
-                    action_plan, pos_and_or_path, cost = self.planner.get_plan(p1_pos_or, goal_pos_or)
-                except:
-                    action_plan = [(0, 0)]  # stay in place
+        # create motion plan to goal state (while avoiding other agent)
+        try:
+            graph = self._graph_from_grid_include_partner(self.planner, p2_pos_or)
+            node_path = graph.get_node_path(p1_pos_or, goal_pos_or)
+            positions_plan = [state_node[0] for state_node in node_path[1:]]
+            action_plan, pos_and_or_path, plan_length = self.planner.action_plan_from_positions(positions_plan, p1_pos_or, goal_pos_or)
+        except:
+            action_plan = [(0,0)]
 
-
-            # TODO: decide what we should do if the other agent is in the way of the human (or the human
-            # is otherwise blocked from executing this plan)
-            self.action_plan = action_plan
+        self.action_plan = action_plan
         return
 
     def set_agent_index(self, agent_index):
