@@ -38,7 +38,7 @@ def pick_up_soup_from_counter_start_state(layout_name="random0"):
 
     start_state = overcooked_mdp.get_standard_start_state()
 
-    counter_location = overcooked_mdp.get_counter_locations()[0]
+    counter_location = overcooked_mdp.get_counter_locations()[1]
 
     # output_state = OvercookedState.from_players_pos_and_or(players_pos_and_or, order_list)
 
