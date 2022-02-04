@@ -1,6 +1,7 @@
 from dependencies import *
 import pickle
 
+from overcooked_ai_py.planning.search import Graph
 from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState, ObjectState, OvercookedState
 from overcooked_ai_py.planning.planners import MotionPlanner, MediumLevelPlanner
 from irl_test_envs import get_start_state
@@ -107,6 +108,34 @@ def get_goal_state(mdp, mlp, state, hl_action, planner):
     # raise ValueError("didn't find valid goal")
     return p1_pos_or
 
+def graph_from_grid_include_partner(planner, p2_pos_or):
+    """Creates a graph adjacency matrix from an Overcooked MDP class."""
+    # State decoder is a dictionary.
+    # For all valid player positions and orientations, insert into the state decoder.
+    # State decoder takes form -- Counter ID: player ( position, orientation )
+    # Position encoder takes form -- player ( position, orientation ): Counter ID
+    # Max counter ID = num of graph nodes
+
+    state_decoder = {}
+    for state_index, motion_state in enumerate(planner.mdp.get_valid_player_positions_and_orientations()):
+        state_decoder[state_index] = motion_state
+
+    pos_encoder = {motion_state: state_index for state_index, motion_state in state_decoder.items()}
+    num_graph_nodes = len(state_decoder)
+
+    adjacency_matrix = np.zeros((num_graph_nodes, num_graph_nodes))
+    for state_index, start_motion_state in state_decoder.items():
+        # For each possible next state that the player can be in given an action.
+        # action = id, successor_motion_state = (new_pos, new_orientation)
+        if start_motion_state[0] != p2_pos_or[0]: # don't include other player's state in graph
+            for action, successor_motion_state in planner._get_valid_successor_motion_states(start_motion_state):
+                adj_pos_index = pos_encoder[successor_motion_state]
+                if successor_motion_state[0] != p2_pos_or[0]: # don't include other player's state as valid transition
+                    adjacency_matrix[state_index][adj_pos_index] = planner._graph_action_cost(action)
+                    # An action can take you from one state to the next, given the cost of the action.
+
+    return Graph(adjacency_matrix, pos_encoder, state_decoder)
+
 def plan(layout_name, teams_list, n_actions=8):
     irl_weights = get_irl_weights(layout_name, teams_list)
     layout_name = "random1" # TODO: get rid of this after debugging
@@ -130,17 +159,18 @@ def plan(layout_name, teams_list, n_actions=8):
     for t in range(100): # we have no other termination condition here
         if action_plan == []:
             best_action = get_best_hl_action(overcooked_mdp, mlp, state, irl_weights, n_actions)
+            print(best_action)
             goal_pos_or = get_goal_state(overcooked_mdp, mlp, state, best_action, planner)
             p1 = state.players[0]
             p1_pos_or = (p1.position, p1.orientation)
+            p2 = state.players[1]
+            p2_pos_or = (p2.position, p2.orientation)
             # create motion plan to goal state
-            # TODO: make less hacky solution--get_plan() throws a KeyError when planning to a location that
-            # isnt a motion goal (generally motion goals are adjacent to counters), which the human's current
-            # position may not be
-            try:
-                action_plan, pos_and_or_path, cost = planner.get_plan(p1_pos_or, goal_pos_or)
-            except:
-                action_plan = [(0,0)] # stay in place
+            
+            graph = graph_from_grid_include_partner(planner, p2_pos_or)
+            node_path = graph.get_node_path(p1_pos_or, goal_pos_or)
+            positions_plan = [state_node[0] for state_node in node_path[1:]]
+            action_plan, pos_and_or_path, plan_length = planner.action_plan_from_positions(positions_plan, p1_pos_or, goal_pos_or)
 
         if action_plan == []:
             action = (0,0)
