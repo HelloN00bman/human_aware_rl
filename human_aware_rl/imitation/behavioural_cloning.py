@@ -19,10 +19,12 @@ from overcooked_ai_py.utils import save_pickle, load_pickle
 
 from human_aware_rl.utils import reset_tf, set_global_seed, common_keys_equal
 from human_aware_rl.baselines_utils import create_dir_if_not_exists
-from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_from_data, get_trajs_from_data_selective, \
-    get_trajs_from_data_for_cross_validation, get_trajs_from_data_specify_groups
+from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_from_data
+# from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_from_data, get_trajs_from_data_selective, \
+#     get_trajs_from_data_for_cross_validation, get_trajs_from_data_specify_groups
 
-BC_SAVE_DIR = "../data/bc_runs/"
+# BC_SAVE_DIR = "../data/bc_runs/"
+BC_SAVE_DIR = ''
 
 # DEFAULT_DATA_PARAMS = {
 #     "train_mdps": ["simple"],
