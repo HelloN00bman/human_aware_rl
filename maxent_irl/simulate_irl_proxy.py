@@ -312,6 +312,7 @@ def load_bc_partner(layout):
     bc_model_paths = {
 
 
+        "random0": "../human_aware_rl/experiments/data/bc_models/random0_bc_train_seed0",
         "random1": "../human_aware_rl/experiments/data/bc_models/random1_bc_test_seed0",
 
     }
@@ -328,7 +329,7 @@ def simulate_belief_update(layout):
 
     baseline_ppo_agent, baseline_ppo_config, baseline_ppo_agent2, baseline_ppo_config2 = load_baseline_models(layout)
 
-    rewards = run_sim(bc_agent, bc_params, baseline_ppo_agent, irl_agent, num_rounds=1, partner_is_ppo=True, partner_index=1)
+    rewards = run_sim(bc_agent, bc_params, baseline_ppo_agent, irl_agent, num_rounds=1, partner_is_ppo=True, partner_index=0)
 
     print("rewards", rewards)
 
@@ -337,7 +338,7 @@ def simulate_belief_update(layout):
 
 
 if __name__ == "__main__":
-    layout = 'random1'
+    layout = 'random0'
     simulate_belief_update(layout)
 
 
