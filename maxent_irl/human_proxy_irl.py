@@ -6,7 +6,6 @@ from overcooked_ai_py.mdp.overcooked_mdp import OvercookedGridworld, PlayerState
 from overcooked_ai_py.planning.planners import MotionPlanner, MediumLevelPlanner
 from irl_test_envs import get_start_state
 import ipdb
-from overcooked_ai_py.mdp.actions import Direction, Action
 
 def get_irl_weights(layout_name, teams_list):
     filename = './irl_weights_'+layout_name + '_' + str(teams_list) + '.pkl'
@@ -181,7 +180,7 @@ def plan(layout_name, teams_list, n_actions=8):
         # is otherwise blocked from executing this plan)
         p2_action = (0,0)
         state, sparse_reward, shaped_reward = overcooked_mdp.get_state_transition(state, (action, p2_action))
-    # ipdb.set_trace()
+    ipdb.set_trace()
 
 def test_hl_action_planning(layout_name="random0"):
     overcooked_mdp = OvercookedGridworld.from_layout_name(layout_name, start_order_list=['any'], cook_time=20)
@@ -209,111 +208,3 @@ if __name__ == "__main__":
     teams_list = [79]
     plan(layout_name, teams_list)
 
-
-
-class IRL_Agent(object):
-    def __init__(self, layout):
-        """
-        Layout
-        """
-        self.history = []
-        self.irl_weights = get_irl_weights('random0', [79]) # TODO: This is manually coded.
-        layout_name = layout
-
-        # construct the gridworld
-        overcooked_mdp = OvercookedGridworld.from_layout_name(layout_name, start_order_list=['any'], cook_time=20)
-        base_params_start_or = {
-            'start_orientations': True,
-            'wait_allowed': False,
-            'counter_goals': overcooked_mdp.terrain_pos_dict['X'],
-            'counter_drop': [],
-            'counter_pickup': [],
-            'same_motion_goals': False
-        }
-        # mlp = MediumLevelPlanner.from_action_manager_file("random1_am.pkl")
-        # mlp.ml_action_manager.counter_drop = overcooked_mdp.terrain_pos_dict[
-        #     'X']  # TODO: save ml_action_manager file to include this
-        mlp = MediumLevelPlanner(overcooked_mdp, base_params_start_or)
-
-        self.mdp = overcooked_mdp
-        self.mlp = mlp
-
-        self.planner = MotionPlanner(overcooked_mdp)
-        self.n_actions = 8
-
-        self.current_plan = []
-        self.action_plan = []
-
-    def action(self, state):
-        if len(self.action_plan) > 0:
-            action = self.action_plan.pop(0)
-        else:
-            self.get_action_plan(state)
-            if len(self.action_plan) == 0:
-                action = (0,0)
-            else:
-                action = self.action_plan.pop(0)
-        print("IRL agent took action: ", action)
-
-        if action == (0,0):
-            action_i = np.random.choice(len(Action.ALL_ACTIONS))
-            action = Action.INDEX_TO_ACTION[action_i]
-        return action
-
-    def _graph_from_grid_include_partner(self, planner, p2_pos_or):
-        """Creates a graph adjacency matrix from an Overcooked MDP class."""
-        # State decoder is a dictionary.
-        # For all valid player positions and orientations, insert into the state decoder.
-        # State decoder takes form -- Counter ID: player ( position, orientation )
-        # Position encoder takes form -- player ( position, orientation ): Counter ID
-        # Max counter ID = num of graph nodes
-
-        state_decoder = {}
-        for state_index, motion_state in enumerate(planner.mdp.get_valid_player_positions_and_orientations()):
-            state_decoder[state_index] = motion_state
-
-        pos_encoder = {motion_state: state_index for state_index, motion_state in state_decoder.items()}
-        num_graph_nodes = len(state_decoder)
-
-        adjacency_matrix = np.zeros((num_graph_nodes, num_graph_nodes))
-        for state_index, start_motion_state in state_decoder.items():
-            # For each possible next state that the player can be in given an action.
-            # action = id, successor_motion_state = (new_pos, new_orientation)
-            if start_motion_state[0] != p2_pos_or[0]: # don't include other player's state in graph
-                for action, successor_motion_state in planner._get_valid_successor_motion_states(start_motion_state):
-                    adj_pos_index = pos_encoder[successor_motion_state]
-                    if successor_motion_state[0] != p2_pos_or[0]: # don't include other player's state as valid transition
-                        adjacency_matrix[state_index][adj_pos_index] = planner._graph_action_cost(action)
-                        # An action can take you from one state to the next, given the cost of the action.
-
-        return Graph(adjacency_matrix, pos_encoder, state_decoder)
-
-    def get_action_plan(self, state):
-        best_action = get_best_hl_action(self.mdp, self.mlp, state, self.irl_weights, self.n_actions)
-        goal_pos_or = get_goal_state(self.mdp, self.mlp, state, best_action, self.planner)
-        p1 = state.players[self.agent_index]
-        p1_pos_or = (p1.position, p1.orientation)
-        other_agent = 1 - self.agent_index
-        p2 = state.players[other_agent]
-        p2_pos_or = (p2.position, p2.orientation)
-
-        # create motion plan to goal state (while avoiding other agent)
-        try:
-            graph = self._graph_from_grid_include_partner(self.planner, p2_pos_or)
-            node_path = graph.get_node_path(p1_pos_or, goal_pos_or)
-            positions_plan = [state_node[0] for state_node in node_path[1:]]
-            action_plan, pos_and_or_path, plan_length = self.planner.action_plan_from_positions(positions_plan, p1_pos_or, goal_pos_or)
-        except:
-            action_plan = [(0,0)]
-
-        self.action_plan = action_plan
-        return
-
-    def set_agent_index(self, agent_index):
-        self.agent_index = agent_index
-
-    def set_mdp(self, mdp):
-        self.mdp = mdp
-
-    def reset(self):
-        self.history = []
