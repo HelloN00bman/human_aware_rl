@@ -54,6 +54,40 @@ class LTA_AgentSimulator(object):
         return self.env.get_rollouts(agent_pair, num_games, display=display, info=info)
 
 
+class Joint_Reasoning_Agent(object):
+    def __init__(self, ppo_agent, bc_agent, bc_index):
+        """
+        Layout
+        """
+        self.history = []
+
+        self.bc_agent = bc_agent
+        self.bc_agent.set_agent_index(bc_index)
+        self.bc_index = bc_index
+
+        self.ppo_agent = ppo_agent
+        self.ppo_agent.set_agent_index(1 - bc_index)
+        self.mdp = None
+
+    def action(self, state):
+        ppo_action = self.ppo_agent.action(state)
+        action = ppo_action
+        return action
+
+
+    def set_agent_index(self, agent_index):
+        self.agent_index = agent_index
+
+    def set_mdp(self, mdp):
+        self.mdp = mdp
+        self.ppo_agent.set_mdp(self.mdp)
+        self.bc_agent.set_mdp(self.mdp)
+
+
+    def reset(self):
+        self.history = []
+
+
 class Joint_AgentPair(object):
     """
     AgentPair is the N=2 case of AgentGroup. Unlike AgentGroup,
@@ -72,6 +106,8 @@ class Joint_AgentPair(object):
         self.ppo_agent = ppo_agent
         self.ppo_agent.set_agent_index(1-bc_index)
 
+
+
         self.stochastic = False # Change to true if using action probabilities instead
 
 
@@ -89,7 +125,7 @@ class Joint_AgentPair(object):
             bc_action = self.bc_agent.action(state)
             bc_action_idx = Action.ACTION_TO_INDEX[bc_action]
 
-        ppo_action = self.ppo_agent.action(state) # TODO: Change to IRL agent decisions
+        ppo_action = self.ppo_agent.action(state) # TODO: Change to joint agent decisions
 
 
         # output = (partner_action, irl_action)
@@ -296,9 +332,10 @@ def load_baseline_models(layout):
 
 
 
-def run_sim(bc_agent, bc_params, ppo_agent, num_rounds=1):
+def run_sim(bc_agent, bc_agent2, bc_params, ppo_agent, num_rounds=1):
     evaluator = LTA_AgentSimulator(mdp_params=bc_params["mdp_params"], env_params=bc_params["env_params"])
-    ppo_and_ppo = evaluator.evaluate_agent_pair(Joint_AgentPair(bc_agent, ppo_agent, bc_index=0),
+    joint_reasoning_ppo = Joint_Reasoning_Agent(ppo_agent, bc_agent, bc_index=0)
+    ppo_and_ppo = evaluator.evaluate_agent_pair(Joint_AgentPair(bc_agent2, joint_reasoning_ppo, bc_index=0),
                                                 num_games=num_rounds, display=False)
     # rewards = ppo_and_ppo["ep_rewards"][0]
     avg_ppo_and_ppo_rewards = np.mean(ppo_and_ppo['ep_returns'])
@@ -307,33 +344,35 @@ def run_sim(bc_agent, bc_params, ppo_agent, num_rounds=1):
 
 
 def load_bc_partner(layout):
-    # bc_model_paths = {
-    #
-    #
-    #     "random0": "../data/bc_runs/random0_bc_train_seed0",
-    #     "random1": "../data/bc_runs/random1_bc_test_seed0",
-    #
-    # }
+    bc_model_paths2 = {
+
+
+        "random0": "../data/bc_runs/random0_bc_train_seed1",
+        "random1": "../data/bc_runs/random1_bc_test_seed1",
+
+    }
     bc_model_paths = {
 
         "random0": "../experiments/data/bc_models/random0_bc_train_seed0",
         "random1": "../experiments/data/bc_models/random1_bc_test_seed0",
 
     }
+
     # print("bc_model_paths[layout]", bc_model_paths[layout])
     bc_agent, bc_params = get_bc_agent_from_saved(bc_model_paths[layout])
+    bc_agent2, bc_params2 = get_bc_agent_from_saved(bc_model_paths2[layout])
     # agent_bc_test, bc_params = get_bc_agent_from_saved(bc_model_paths['test'][layout])
 
-    return bc_agent, bc_params
+    return bc_agent, bc_params, bc_agent2, bc_params2
 
 
 def simulate_single_game(layout):
-    bc_agent, bc_params = load_bc_partner(layout)
+    bc_agent, bc_params, bc_agent2, bc_params2 = load_bc_partner(layout)
 
 
     baseline_ppo_agent, baseline_ppo_config, baseline_ppo_agent2, baseline_ppo_config2 = load_baseline_models(layout)
 
-    rewards = run_sim(bc_agent, bc_params, baseline_ppo_agent, num_rounds=1)
+    rewards = run_sim(bc_agent, bc_agent2, bc_params, baseline_ppo_agent, num_rounds=1)
 
     print("rewards", rewards)
 
