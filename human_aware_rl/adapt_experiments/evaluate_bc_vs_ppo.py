@@ -54,6 +54,65 @@ class LTA_AgentSimulator(object):
         return self.env.get_rollouts(agent_pair, num_games, display=display, info=info)
 
 
+class Joint_AgentPair(object):
+    """
+    AgentPair is the N=2 case of AgentGroup. Unlike AgentGroup,
+    it supports having both agents being the same instance of Agent.
+
+    NOTE: Allowing duplicate agents (using the same instance of an agent
+    for both fields can lead to problems if the agents have state / history)
+    """
+
+    def __init__(self, bc_agent, ppo_agent, bc_index):
+
+        self.bc_agent = bc_agent
+        self.bc_agent.set_agent_index(bc_index)
+        self.bc_index = bc_index
+
+        self.ppo_agent = ppo_agent
+        self.ppo_agent.set_agent_index(1-bc_index)
+
+        self.stochastic = False # Change to true if using action probabilities instead
+
+
+    def joint_action(self, state):
+
+        # partner_action_idx = np.argmax(self.partner_agent.action(state))
+        # partner_action = Action.INDEX_TO_ACTION[partner_action_idx]
+
+
+        # print("self.partner_agent.action(state)", self.partner_agent.action(state))
+        if self.stochastic:
+            bc_action_idx = np.random.choice(len(Action.ALL_ACTIONS), p=self.bc_agent.action(state))
+            bc_action = Action.INDEX_TO_ACTION[bc_action_idx]
+        else:
+            bc_action = self.bc_agent.action(state)
+            bc_action_idx = Action.ACTION_TO_INDEX[bc_action]
+
+        ppo_action = self.ppo_agent.action(state) # TODO: Change to IRL agent decisions
+
+
+        # output = (partner_action, irl_action)
+        if self.bc_index == 0:
+            output = (bc_action, ppo_action)
+        else:
+            output = (ppo_action, bc_action)
+
+        return output
+
+    def set_mdp(self, mdp):
+        self.bc_agent.set_mdp(mdp)
+        self.ppo_agent.set_mdp(mdp)
+
+
+    def reset(self):
+        self.bc_agent.reset()
+        self.ppo_agent.reset()
+
+
+
+
+
 class Simulate_OvercookedEnv(object):
     """An environment wrapper for the OvercookedGridworld Markov Decision Process.
 
@@ -239,7 +298,7 @@ def load_baseline_models(layout):
 
 def run_sim(bc_agent, bc_params, ppo_agent, num_rounds=1):
     evaluator = LTA_AgentSimulator(mdp_params=bc_params["mdp_params"], env_params=bc_params["env_params"])
-    ppo_and_ppo = evaluator.evaluate_agent_pair(AgentPair(bc_agent, ppo_agent),
+    ppo_and_ppo = evaluator.evaluate_agent_pair(Joint_AgentPair(bc_agent, ppo_agent, bc_index=0),
                                                 num_games=num_rounds, display=False)
     # rewards = ppo_and_ppo["ep_rewards"][0]
     avg_ppo_and_ppo_rewards = np.mean(ppo_and_ppo['ep_returns'])
