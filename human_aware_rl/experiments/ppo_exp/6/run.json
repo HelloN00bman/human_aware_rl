@@ -1,0 +1,99 @@
+{
+  "artifacts": [],
+  "command": "bc_run",
+  "experiment": {
+    "base_dir": "/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/human_aware_rl/lta_ppo",
+    "dependencies": [
+      "ale-py==0.7.3",
+      "matplotlib==3.3.2",
+      "memory-profiler==0.59.0",
+      "numpy==1.21.4",
+      "sacred==0.7.4",
+      "seaborn==0.9.0",
+      "tensorflow==1.13.1"
+    ],
+    "mainfile": "train_model_on_bc_only.py",
+    "name": "PPO",
+    "repositories": [
+      {
+        "commit": "a911898a4de1ebc95b15f6776eed1910912b8583",
+        "dirty": true,
+        "url": "git@github.com:HelloN00bman/human_aware_rl.git"
+      }
+    ],
+    "sources": [
+      [
+        "train_model_on_bc_only.py",
+        "_sources/train_model_on_bc_only_d8069dd0d7b05ab351fe66ee30b2352d.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/config/captured_function.py\", line 46, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"../lta_ppo/train_model_on_bc_only.py\", line 284, in bc_run\n    model = create_model(gym_env, \"ppo_agent\", **params)\n",
+    "  File \"../../human_aware_rl/baselines_utils.py\", line 400, in create_model\n    network_kwargs=kwargs\n",
+    "  File \"/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/baselines/baselines/ppo2/ppo2.py\", line 116, in learn\n    max_grad_norm=max_grad_norm, scope=scope)\n",
+    "  File \"/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/baselines/baselines/ppo2/model.py\", line 37, in __init__\n    act_model = policy(nbatch_act, 1, sess)\n",
+    "  File \"/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/baselines/baselines/common/policies.py\", line 151, in policy_fn\n    policy_latent = policy_network(encoded_x)\n",
+    "  File \"../../human_aware_rl/baselines_utils.py\", line 227, in network_fn\n    out = tf.layers.concatenate([out, human_pred_out], size_hidden_layers, activation=tf.nn.leaky_relu)\n",
+    "AttributeError: module 'tensorflow._api.v1.layers' has no attribute 'concatenate'\n"
+  ],
+  "heartbeat": "2022-02-16T22:03:46.830495",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+    "hostname": "michelles-mbp-2.wifi.local.cmu.edu",
+    "os": [
+      "Darwin",
+      "Darwin-20.5.0-x86_64-i386-64bit"
+    ],
+    "python_version": "3.7.11"
+  },
+  "meta": {
+    "command": "bc_run",
+    "options": {
+      "--beat_interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print_config": false,
+      "--priority": null,
+      "--queue": false,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "EX_NAME=testing_lta",
+        "layout_name=simple",
+        "REW_SHAPING_HORIZON=1e6",
+        "PPO_RUN_TOT_TIMESTEPS=8e6",
+        "LR=1e-3",
+        "GPU_ID=0",
+        "OTHER_AGENT_TYPE=bc_train",
+        "SEEDS=[9456, 1887, 5578, 5987,  516]",
+        "VF_COEF=0.5",
+        "MINIBATCHES=10",
+        "LR_ANNEALING=3",
+        "SELF_PLAY_HORIZON=[5e5, 3e6]",
+        "TIMESTAMP_DIR=False"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2022-02-16T22:03:27.419171",
+  "status": "FAILED",
+  "stop_time": "2022-02-16T22:03:46.833733"
+}

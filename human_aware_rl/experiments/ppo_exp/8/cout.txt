@@ -1,0 +1,222 @@
+INFO - PPO - Running command 'bc_run'
+INFO - PPO - Started run with ID "8"
+Creating env with params {'RUN_TYPE': 'ppo3', 'SEEDS': [9456, 1887, 5578, 5987, 516], 'LOCAL_TESTING': False, 'EX_NAME': 'testing_lta', 'SAVE_DIR': 'testing_lta/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 8000000.0, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 3, 'ONION_IN_PARTIAL_POT_REWARD': 3, 'DISH_PICKUP_REWARD': 2, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 2, 'BOTH_POTS_FULL_REWARD': 5, 'SERVE_SOUP_REWARD': 2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'two_head_conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 53280.0}
+Computing MediumLevelPlanner to be saved in /Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.17009997367858887 seconds to create mlp
+2022-02-16 17:05:15.977382: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+WARNING:tensorflow:From /Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+SHAPE OF X (30, 5, 4, 20)
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils.py:185: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils.py:185: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils.py:198: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils.py:198: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils.py:223: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils.py:223: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+57065
+number of parameters None
+SHAPE OF X (1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+57648
+number of parameters None
+WARNING:tensorflow:From /opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+TOT NUM UPDATES 0
+CREATED MODEL <baselines.ppo2.model.Model object at 0x7fe63bf5a610>
+Creating env with params {'RUN_TYPE': 'ppo3', 'SEEDS': [9456, 1887, 5578, 5987, 516], 'LOCAL_TESTING': False, 'EX_NAME': 'testing_lta', 'SAVE_DIR': 'testing_lta/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 8000000.0, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 3.0, 'ONION_IN_PARTIAL_POT_REWARD': 3.0, 'DISH_PICKUP_REWARD': 2.0, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 2.0, 'BOTH_POTS_FULL_REWARD': 5.0, 'SERVE_SOUP_REWARD': 2.0}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'two_head_conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 53280.0, 'CURR_SEED': 9456}
+Computing MediumLevelPlanner to be saved in /Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.7223789691925049 seconds to create mlp
+SubprocVecEnv worker: got KeyboardInterrupt
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+SubprocVecEnv worker: got KeyboardInterrupt
+SubprocVecEnv worker: got KeyboardInterrupt
+SubprocVecEnv worker: got KeyboardInterrupt
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+SubprocVecEnv worker: got KeyboardInterrupt
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+SubprocVecEnv worker: got KeyboardInterrupt
+SubprocVecEnv worker: got KeyboardInterrupt
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/ale_py-0.7.3-py3.7-macosx-10.9-x86_64.egg/ale_py/roms/utils.py:90: DeprecationWarning: SelectableGroups dict interface is deprecated. Use select.
+  for external in metadata.entry_points().get(self.group, []):
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:526: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint8 = np.dtype([("qint8", np.int8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:527: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint8 = np.dtype([("quint8", np.uint8, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:528: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint16 = np.dtype([("qint16", np.int16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:529: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_quint16 = np.dtype([("quint16", np.uint16, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:530: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  _np_qint32 = np.dtype([("qint32", np.int32, 1)])
+/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/dtypes.py:535: FutureWarning: Passing (type, 1) or '1type' as a synonym of type is deprecated; in a future version of numpy, it will be understood as (type, (1,)) / '(1,)type'.
+  np_resource = np.dtype([("resource", np.ubyte, 1)])
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/multiprocessing/spawn.py", line 105, in spawn_main
+    exitcode = _main(fd)
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/multiprocessing/spawn.py", line 114, in _main
+    prepare(preparation_data)
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/multiprocessing/spawn.py", line 225, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/multiprocessing/spawn.py", line 277, in _fixup_main_from_path
+    run_name="__mp_main__")
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/runpy.py", line 263, in run_path
+    pkg_name=pkg_name, script_name=fname)
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/runpy.py", line 96, in _run_module_code
+    mod_name, mod_spec, pkg_name, script_name)
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/human_aware_rl/lta_ppo/train_model_on_bc_only.py", line 27, in <module>
+    from human_aware_rl.baselines_utils import get_vectorized_gym_env, create_model, update_model, save_baselines_model, \
+  File "../../human_aware_rl/baselines_utils.py", line 13, in <module>
+    from human_aware_rl.utils import create_dir_if_not_exists, num_tf_params, get_max_iter
+  File "../../human_aware_rl/utils.py", line 14, in <module>
+    import stable_baselines
+  File "/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/stable-baselines/stable_baselines/__init__.py", line 4, in <module>
+    from stable_baselines.ddpg import DDPG
+  File "/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/stable-baselines/stable_baselines/ddpg/__init__.py", line 1, in <module>
+    from stable_baselines.ddpg.ddpg import DDPG
+  File "/Users/michellezhao/Documents/long_term_adaptation/human_aware_rl/stable-baselines/stable_baselines/ddpg/ddpg.py", line 11, in <module>
+    import tensorflow.contrib as tc
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/contrib/__init__.py", line 72, in <module>
+    from tensorflow.contrib import reduce_slice_ops
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/contrib/reduce_slice_ops/__init__.py", line 26, in <module>
+    from tensorflow.contrib.reduce_slice_ops.python.ops import *
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap>", line 307, in __init__
+KeyboardInterrupt
+Error in atexit._run_exitfuncs:
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/lta_overcooked/lib/python3.7/logging/__init__.py", line 2021, in shutdown
+    def shutdown(handlerList=_handlerList):
+KeyboardInterrupt
