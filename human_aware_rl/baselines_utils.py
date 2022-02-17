@@ -101,6 +101,97 @@ class DummyEnv(object):
 # UTILS AND HELPER FNS #
 ########################
 
+
+@register("two_head_conv_and_mlp")
+def two_head_conv_network_fn(**kwargs):
+    """Used to register custom network type used by Baselines for Overcooked"""
+
+    if "network_kwargs" in kwargs.keys():
+        params = kwargs["network_kwargs"]
+    else:
+        params = kwargs
+
+    num_hidden_layers = params["NUM_HIDDEN_LAYERS"]
+    size_hidden_layers = params["SIZE_HIDDEN_LAYERS"]
+    num_filters = params["NUM_FILTERS"]
+    num_convs = params["NUM_CONV_LAYERS"]
+
+    def network_fn(X):
+        print("SHAPE OF X", X.shape)
+        # Last layer conv network output shape (30, 64)
+        # 57065
+        # number of parameters None
+        # SHAPE OF X (1200, 5, 4, 20)
+        # Last layer conv network output shape (1200, 64)
+        # 57648
+
+
+        dim_expert_dataset = 10
+        # human_pred_out = tf.layers.dense(human_featurized_state, 64)
+        # for _ in range(3):
+        #     human_pred_out = tf.layers.dense(human_pred_out, 64, activation=tf.nn.leaky_relu)
+        human_pred_out = tf.layers.conv2d(
+            inputs=X,
+            filters=num_filters,
+            kernel_size=[5, 5],
+            padding="same",
+            activation=tf.nn.leaky_relu,
+            name="conv_initial"
+        )
+
+        for i in range(0, num_convs - 1):
+            padding = "same" if i < num_convs - 2 else "valid"
+            human_pred_out = tf.layers.conv2d(
+                inputs=human_pred_out,
+                filters=num_filters,
+                kernel_size=[3, 3],
+                padding=padding,
+                activation=tf.nn.leaky_relu,
+                name="conv_{}".format(i)
+            )
+        human_pred_out = tf.layers.flatten(human_pred_out)
+
+
+        conv_out = tf.layers.conv2d(
+            inputs=X,
+            filters=num_filters,
+            kernel_size=[5, 5],
+            padding="same",
+            activation=tf.nn.leaky_relu,
+            name="conv_initial"
+        )
+
+        for i in range(0, num_convs - 1):
+            padding = "same" if i < num_convs - 2 else "valid"
+            conv_out = tf.layers.conv2d(
+                inputs=conv_out,
+                filters=num_filters,
+                kernel_size=[3, 3],
+                padding=padding,
+                activation=tf.nn.leaky_relu,
+                name="conv_{}".format(i)
+            )
+
+        out = tf.layers.flatten(conv_out)
+        for _ in range(num_hidden_layers):
+            out = tf.layers.dense(out, size_hidden_layers, activation=tf.nn.leaky_relu)
+
+        print("Last layer conv network output shape", out.shape) # conv network output shape (30, 64)
+        for _ in range(int(num_hidden_layers / 2)):
+            concatenated = tf.keras.layers.Concatenate(axis=1)([out, human_pred_out])
+            out = tf.layers.dense(concatenated, size_hidden_layers, activation=tf.nn.leaky_relu)
+
+        # NOTE: not sure if not supposed to add linear layer. I think it is though,
+        # as things work and similar to code in baseline/models.py? Maybe double check later.
+
+        # To check how many parameters uncomment next line
+        print("number of parameters", num_tf_params())
+        return out
+
+    return network_fn
+
+
+
 @register("conv_and_mlp")
 def conv_network_fn(**kwargs):
     """Used to register custom network type used by Baselines for Overcooked"""

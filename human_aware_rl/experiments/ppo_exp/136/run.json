@@ -1,0 +1,103 @@
+{
+  "artifacts": [],
+  "command": "bc_run",
+  "experiment": {
+    "base_dir": "/home/mzhao2/long_term_adaptation/human_aware_rl/human_aware_rl/lta_ppo",
+    "dependencies": [
+      "ale-py==0.7.3",
+      "matplotlib==3.5.0",
+      "memory-profiler==0.60.0",
+      "numpy==1.21.5",
+      "sacred==0.7.4",
+      "seaborn==0.9.0",
+      "tensorflow-gpu==2.0.0"
+    ],
+    "mainfile": "train_model_on_bc_only.py",
+    "name": "PPO",
+    "repositories": [
+      {
+        "commit": "dde512943314df8e316c6fd5c4de3d62a89f9481",
+        "dirty": true,
+        "url": "git@github.com:HelloN00bman/human_aware_rl.git"
+      }
+    ],
+    "sources": [
+      [
+        "train_model_on_bc_only.py",
+        "_sources/train_model_on_bc_only_549d4cc46736e314681b311e4e9f3ec8.py"
+      ]
+    ]
+  },
+  "heartbeat": "2022-02-17T03:27:17.216900",
+  "host": {
+    "ENV": {},
+    "cpu": "AMD Ryzen Threadripper 2990WX 32-Core Processor",
+    "gpus": {
+      "driver_version": "465.19.01",
+      "gpus": [
+        {
+          "model": "NVIDIA GeForce RTX 2080 Ti",
+          "persistence_mode": true,
+          "total_memory": 11019
+        },
+        {
+          "model": "NVIDIA GeForce RTX 2080 Ti",
+          "persistence_mode": true,
+          "total_memory": 11016
+        }
+      ]
+    },
+    "hostname": "forte",
+    "os": [
+      "Linux",
+      "Linux-5.4.0-94-generic-x86_64-with-debian-buster-sid"
+    ],
+    "python_version": "3.7.11"
+  },
+  "meta": {
+    "command": "bc_run",
+    "options": {
+      "--beat_interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print_config": false,
+      "--priority": null,
+      "--queue": false,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "EX_NAME=testing_lta",
+        "layout_name=simple",
+        "REW_SHAPING_HORIZON=1e6",
+        "PPO_RUN_TOT_TIMESTEPS=8e6",
+        "LR=1e-3",
+        "GPU_ID=0",
+        "OTHER_AGENT_TYPE=bc_train",
+        "SEEDS=[9456, 1887, 5578, 5987,  516]",
+        "VF_COEF=0.5",
+        "MINIBATCHES=10",
+        "LR_ANNEALING=3",
+        "SELF_PLAY_HORIZON=[5e5, 3e6]",
+        "TIMESTAMP_DIR=False"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2022-02-17T03:27:16.307835",
+  "status": "INTERRUPTED",
+  "stop_time": "2022-02-17T03:27:17.218965"
+}

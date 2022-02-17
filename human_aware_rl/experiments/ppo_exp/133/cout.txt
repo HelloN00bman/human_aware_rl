@@ -1,0 +1,70 @@
+INFO - PPO - Running command 'bc_run'
+INFO - PPO - Started run with ID "133"
+Creating env with params {'RUN_TYPE': 'ppo3', 'SEEDS': [9456, 1887, 5578, 5987, 516], 'LOCAL_TESTING': False, 'EX_NAME': 'testing_lta', 'SAVE_DIR': 'testing_lta/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 8000000.0, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 3, 'ONION_IN_PARTIAL_POT_REWARD': 3, 'DISH_PICKUP_REWARD': 2, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 2, 'BOTH_POTS_FULL_REWARD': 5, 'SERVE_SOUP_REWARD': 2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'two_head_conv_and_mlp2', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 53280.0}
+Computing MediumLevelPlanner to be saved in /home/mzhao2/long_term_adaptation/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.142225980758667 seconds to create mlp
+num_convs 3
+2022-02-16 22:23:21.608724: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2022-02-16 22:23:21.616602: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2999645000 Hz
+2022-02-16 22:23:21.619235: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x564d7a46e450 executing computations on platform Host. Devices:
+2022-02-16 22:23:21.619276: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+SHAPE OF X (30, 5, 4, 20)
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:237: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:237: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:252: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:252: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:255: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:255: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+FINAL OUTPUT concat network output shape (30, 12)
+124191
+number of parameters None
+SHAPE OF X (1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+FINAL OUTPUT concat network output shape (1200, 12)
+124306
+number of parameters None
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+TOT NUM UPDATES 1
+SP envs: 30/30
+Other agent actions took 0.8082830905914307 seconds
+Total simulation time for 400 steps: 3.0780715942382812 	 Other agent action time: 0 	 129.95149324945655 steps/s
+Curr learning rate 0.0003 	 Curr reward per step -0.09625
+
+0/8:   0%|          | 0/10 [00:00<?, ?it/s]
+0/8:   0%|          | 0/10 [00:00<?, ?it/s]

@@ -1,0 +1,271 @@
+INFO - PPO - Running command 'bc_run'
+INFO - PPO - Started run with ID "132"
+Creating env with params {'RUN_TYPE': 'ppo3', 'SEEDS': [9456, 1887, 5578, 5987, 516], 'LOCAL_TESTING': False, 'EX_NAME': 'testing_lta', 'SAVE_DIR': 'testing_lta/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 8000000.0, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 3, 'ONION_IN_PARTIAL_POT_REWARD': 3, 'DISH_PICKUP_REWARD': 2, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 2, 'BOTH_POTS_FULL_REWARD': 5, 'SERVE_SOUP_REWARD': 2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'two_head_conv_and_mlp2', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 53280.0}
+Computing MediumLevelPlanner to be saved in /home/mzhao2/long_term_adaptation/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.1437363624572754 seconds to create mlp
+num_convs 3
+2022-02-16 22:21:25.609004: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2022-02-16 22:21:25.617557: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2999645000 Hz
+2022-02-16 22:21:25.619295: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x557d4d5912f0 executing computations on platform Host. Devices:
+2022-02-16 22:21:25.619323: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+SHAPE OF X (30, 5, 4, 20)
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:237: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:237: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:252: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:252: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:255: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:255: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+FINAL OUTPUT concat network output shape (30, 12)
+124191
+number of parameters None
+SHAPE OF X (1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+FINAL OUTPUT concat network output shape (1200, 12)
+124306
+number of parameters None
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+TOT NUM UPDATES 1
+SP envs: 30/30
+Other agent actions took 0.8351826667785645 seconds
+Total simulation time for 400 steps: 3.2256569862365723 	 Other agent action time: 0 	 124.00574571528966 steps/s
+Curr learning rate 0.0003 	 Curr reward per step -0.09625
+
+0/8:   0%|          | 0/10 [00:00<?, ?it/s]
+0/8:  10%|█         | 1/10 [00:00<00:00,  9.59it/s]
+0/8:  30%|███       | 3/10 [00:00<00:00, 14.62it/s]
+0/8:  50%|█████     | 5/10 [00:00<00:00, 16.26it/s]
+0/8:  70%|███████   | 7/10 [00:00<00:00, 17.21it/s]
+0/8:  90%|█████████ | 9/10 [00:00<00:00, 17.88it/s]
+0/8: 100%|██████████| 10/10 [00:00<00:00, 16.79it/s]
+
+1/8:   0%|          | 0/10 [00:00<?, ?it/s]
+1/8:  20%|██        | 2/10 [00:00<00:00, 18.48it/s]
+1/8:  40%|████      | 4/10 [00:00<00:00, 18.28it/s]
+1/8:  60%|██████    | 6/10 [00:00<00:00, 18.55it/s]
+1/8:  80%|████████  | 8/10 [00:00<00:00, 18.56it/s]
+1/8: 100%|██████████| 10/10 [00:00<00:00, 18.87it/s]
+1/8: 100%|██████████| 10/10 [00:00<00:00, 18.69it/s]
+
+2/8:   0%|          | 0/10 [00:00<?, ?it/s]
+2/8:  20%|██        | 2/10 [00:00<00:00, 19.03it/s]
+2/8:  40%|████      | 4/10 [00:00<00:00, 19.14it/s]
+2/8:  60%|██████    | 6/10 [00:00<00:00, 19.09it/s]
+2/8:  80%|████████  | 8/10 [00:00<00:00, 19.14it/s]
+2/8: 100%|██████████| 10/10 [00:00<00:00, 18.93it/s]
+2/8: 100%|██████████| 10/10 [00:00<00:00, 19.00it/s]
+
+3/8:   0%|          | 0/10 [00:00<?, ?it/s]
+3/8:  20%|██        | 2/10 [00:00<00:00, 18.82it/s]
+3/8:  40%|████      | 4/10 [00:00<00:00, 18.32it/s]
+3/8:  60%|██████    | 6/10 [00:00<00:00, 17.25it/s]
+3/8:  80%|████████  | 8/10 [00:00<00:00, 16.75it/s]
+3/8: 100%|██████████| 10/10 [00:00<00:00, 17.44it/s]
+3/8: 100%|██████████| 10/10 [00:00<00:00, 17.46it/s]
+
+4/8:   0%|          | 0/10 [00:00<?, ?it/s]
+4/8:  20%|██        | 2/10 [00:00<00:00, 17.64it/s]
+4/8:  40%|████      | 4/10 [00:00<00:00, 17.38it/s]
+4/8:  60%|██████    | 6/10 [00:00<00:00, 18.03it/s]
+4/8:  80%|████████  | 8/10 [00:00<00:00, 17.91it/s]
+4/8: 100%|██████████| 10/10 [00:00<00:00, 16.94it/s]
+4/8: 100%|██████████| 10/10 [00:00<00:00, 17.30it/s]
+
+5/8:   0%|          | 0/10 [00:00<?, ?it/s]
+5/8:  20%|██        | 2/10 [00:00<00:00, 13.94it/s]
+5/8:  40%|████      | 4/10 [00:00<00:00, 15.52it/s]
+5/8:  60%|██████    | 6/10 [00:00<00:00, 15.88it/s]
+5/8:  80%|████████  | 8/10 [00:00<00:00, 15.69it/s]
+5/8: 100%|██████████| 10/10 [00:00<00:00, 14.78it/s]
+5/8: 100%|██████████| 10/10 [00:00<00:00, 15.07it/s]
+
+6/8:   0%|          | 0/10 [00:00<?, ?it/s]
+6/8:  20%|██        | 2/10 [00:00<00:00, 13.48it/s]
+6/8:  40%|████      | 4/10 [00:00<00:00, 15.37it/s]
+6/8:  60%|██████    | 6/10 [00:00<00:00, 15.16it/s]
+6/8:  80%|████████  | 8/10 [00:00<00:00, 15.41it/s]
+6/8: 100%|██████████| 10/10 [00:00<00:00, 15.91it/s]
+6/8: 100%|██████████| 10/10 [00:00<00:00, 15.50it/s]
+
+7/8:   0%|          | 0/10 [00:00<?, ?it/s]
+7/8:  20%|██        | 2/10 [00:00<00:00, 15.34it/s]
+7/8:  40%|████      | 4/10 [00:00<00:00, 16.67it/s]
+7/8:  60%|██████    | 6/10 [00:00<00:00, 16.35it/s]
+7/8:  80%|████████  | 8/10 [00:00<00:00, 15.64it/s]
+7/8: 100%|██████████| 10/10 [00:00<00:00, 15.44it/s]
+7/8: 100%|██████████| 10/10 [00:00<00:00, 15.69it/s]
+Logging to /tmp/openai-2022-02-16-22-21-34-734547
+---------------------------------------
+| approxkl           | 6.0402865e-05  |
+| clipfrac           | 0.0            |
+| eplenmean          | 400            |
+| eprewmean          | -38.5          |
+| explained_variance | 0.00164        |
+| fps                | 1495           |
+| nupdates           | 1              |
+| policy_entropy     | 1.7917011      |
+| policy_loss        | -0.00031200136 |
+| serial_timesteps   | 400            |
+| time_elapsed       | 8.03           |
+| time_remaining     | 0              |
+| total_timesteps    | 12000          |
+| true_eprew         | 0.667          |
+| value_loss         | 2.087901       |
+---------------------------------------
+CREATED MODEL <baselines.ppo3.model.Model object at 0x7f0e99e44d90>
+num_convs 3
+TOT NUM UPDATES 1
+SP envs: 30/30
+Other agent actions took 0.8422296047210693 seconds
+Total simulation time for 400 steps: 3.2553861141204834 	 Other agent action time: 0 	 122.87328936649627 steps/s
+Curr learning rate 0.001 	 Curr reward per step -0.09891666666666668
+
+0/8:   0%|          | 0/10 [00:00<?, ?it/s]
+0/8:  20%|██        | 2/10 [00:00<00:00, 13.34it/s]
+0/8:  40%|████      | 4/10 [00:00<00:00, 14.85it/s]
+0/8:  60%|██████    | 6/10 [00:00<00:00, 15.57it/s]
+0/8:  80%|████████  | 8/10 [00:00<00:00, 15.38it/s]
+0/8: 100%|██████████| 10/10 [00:00<00:00, 15.84it/s]
+0/8: 100%|██████████| 10/10 [00:00<00:00, 15.45it/s]
+
+1/8:   0%|          | 0/10 [00:00<?, ?it/s]
+1/8:  20%|██        | 2/10 [00:00<00:00, 17.22it/s]
+1/8:  40%|████      | 4/10 [00:00<00:00, 17.62it/s]
+1/8:  60%|██████    | 6/10 [00:00<00:00, 17.43it/s]
+1/8:  80%|████████  | 8/10 [00:00<00:00, 17.08it/s]
+1/8: 100%|██████████| 10/10 [00:00<00:00, 17.68it/s]
+1/8: 100%|██████████| 10/10 [00:00<00:00, 17.51it/s]
+
+2/8:   0%|          | 0/10 [00:00<?, ?it/s]
+2/8:  20%|██        | 2/10 [00:00<00:00, 15.10it/s]
+2/8:  40%|████      | 4/10 [00:00<00:00, 17.21it/s]
+2/8:  60%|██████    | 6/10 [00:00<00:00, 17.91it/s]
+2/8:  80%|████████  | 8/10 [00:00<00:00, 18.03it/s]
+2/8: 100%|██████████| 10/10 [00:00<00:00, 17.09it/s]
+2/8: 100%|██████████| 10/10 [00:00<00:00, 17.20it/s]
+
+3/8:   0%|          | 0/10 [00:00<?, ?it/s]
+3/8:  20%|██        | 2/10 [00:00<00:00, 17.09it/s]
+3/8:  40%|████      | 4/10 [00:00<00:00, 17.88it/s]
+3/8:  60%|██████    | 6/10 [00:00<00:00, 17.46it/s]
+3/8:  80%|████████  | 8/10 [00:00<00:00, 17.88it/s]
+3/8: 100%|██████████| 10/10 [00:00<00:00, 18.08it/s]
+3/8: 100%|██████████| 10/10 [00:00<00:00, 17.87it/s]
+
+4/8:   0%|          | 0/10 [00:00<?, ?it/s]
+4/8:  20%|██        | 2/10 [00:00<00:00, 18.44it/s]
+4/8:  40%|████      | 4/10 [00:00<00:00, 18.46it/s]
+4/8:  60%|██████    | 6/10 [00:00<00:00, 18.50it/s]
+4/8:  80%|████████  | 8/10 [00:00<00:00, 18.46it/s]
+4/8: 100%|██████████| 10/10 [00:00<00:00, 18.34it/s]
+4/8: 100%|██████████| 10/10 [00:00<00:00, 18.39it/s]
+
+5/8:   0%|          | 0/10 [00:00<?, ?it/s]
+5/8:  20%|██        | 2/10 [00:00<00:00, 18.82it/s]
+5/8:  40%|████      | 4/10 [00:00<00:00, 18.43it/s]
+5/8:  60%|██████    | 6/10 [00:00<00:00, 18.54it/s]
+5/8:  80%|████████  | 8/10 [00:00<00:00, 18.06it/s]
+5/8: 100%|██████████| 10/10 [00:00<00:00, 18.34it/s]
+5/8: 100%|██████████| 10/10 [00:00<00:00, 18.35it/s]
+
+6/8:   0%|          | 0/10 [00:00<?, ?it/s]
+6/8:  20%|██        | 2/10 [00:00<00:00, 18.42it/s]
+6/8:  40%|████      | 4/10 [00:00<00:00, 18.14it/s]
+6/8:  60%|██████    | 6/10 [00:00<00:00, 18.33it/s]
+6/8:  80%|████████  | 8/10 [00:00<00:00, 18.39it/s]
+6/8: 100%|██████████| 10/10 [00:00<00:00, 18.40it/s]
+6/8: 100%|██████████| 10/10 [00:00<00:00, 18.35it/s]
+
+7/8:   0%|          | 0/10 [00:00<?, ?it/s]
+7/8:  20%|██        | 2/10 [00:00<00:00, 18.22it/s]
+7/8:  40%|████      | 4/10 [00:00<00:00, 18.36it/s]
+7/8:  60%|██████    | 6/10 [00:00<00:00, 17.68it/s]
+7/8:  80%|████████  | 8/10 [00:00<00:00, 17.69it/s]
+7/8: 100%|██████████| 10/10 [00:00<00:00, 18.15it/s]
+7/8: 100%|██████████| 10/10 [00:00<00:00, 18.03it/s]
+--------------------------------------
+| approxkl           | 0.0005202987  |
+| clipfrac           | 0.036197916   |
+| eplenmean          | 400           |
+| eprewmean          | -39.6         |
+| explained_variance | 0.00363       |
+| fps                | 1531          |
+| nupdates           | 1             |
+| policy_entropy     | 1.7906249     |
+| policy_loss        | -0.0008072037 |
+| serial_timesteps   | 400           |
+| time_elapsed       | 7.84          |
+| time_remaining     | 0             |
+| total_timesteps    | 12000         |
+| true_eprew         | 1.33          |
+| value_loss         | 6.674096      |
+--------------------------------------
+Deleting old dir testing_lta/seed0/ppo_agent
+WARNING:tensorflow:From ../lta_ppo/train_model_on_bc_only.py:242: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING - tensorflow - From ../lta_ppo/train_model_on_bc_only.py:242: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+INFO:tensorflow:Assets added to graph.
+INFO - tensorflow - Assets added to graph.
+INFO:tensorflow:No assets to write.
+INFO - tensorflow - No assets to write.
+WARNING:tensorflow:Issue encountered when serializing human_params.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'list' object has no attribute 'name'
+WARNING - tensorflow - Issue encountered when serializing human_params.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'list' object has no attribute 'name'
+WARNING:tensorflow:Issue encountered when serializing robot_params.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'list' object has no attribute 'name'
+WARNING - tensorflow - Issue encountered when serializing robot_params.
+Type is unsupported, or the types of the items don't match field type in CollectionDef. Note this is a warning and probably safe to ignore.
+'list' object has no attribute 'name'
+INFO:tensorflow:SavedModel written to: testing_lta/seed0/ppo_agent/saved_model.pb
+INFO - tensorflow - SavedModel written to: testing_lta/seed0/ppo_agent/saved_model.pb
+Saved training info at testing_lta/seed0/training_info
+INFO - PPO - Result: <baselines.ppo3.model.Model object at 0x7f0e99e44d90>
+INFO - PPO - Completed after 0:00:22

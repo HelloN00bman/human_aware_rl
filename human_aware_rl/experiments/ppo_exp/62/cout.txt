@@ -1,0 +1,102 @@
+INFO - PPO - Running command 'bc_run'
+INFO - PPO - Started run with ID "62"
+Creating env with params {'RUN_TYPE': 'ppo3', 'SEEDS': [9456, 1887, 5578, 5987, 516], 'LOCAL_TESTING': False, 'EX_NAME': 'testing_lta', 'SAVE_DIR': 'testing_lta/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 8000000.0, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 3, 'ONION_IN_PARTIAL_POT_REWARD': 3, 'DISH_PICKUP_REWARD': 2, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 2, 'BOTH_POTS_FULL_REWARD': 5, 'SERVE_SOUP_REWARD': 2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'two_head_conv_and_mlp2', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 53280.0}
+Computing MediumLevelPlanner to be saved in /home/mzhao2/long_term_adaptation/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.14450931549072266 seconds to create mlp
+num_convs 3
+2022-02-16 20:34:55.946957: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2022-02-16 20:34:55.956007: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2999645000 Hz
+2022-02-16 20:34:55.958372: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x55ee685162a0 executing computations on platform Host. Devices:
+2022-02-16 20:34:55.958424: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+WARNING:tensorflow:From /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+SHAPE OF X (30, 5, 4, 20)
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:237: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:237: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:252: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:252: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From ../../human_aware_rl/baselines_utils_for_lta.py:255: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From ../../human_aware_rl/baselines_utils_for_lta.py:255: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+FINAL OUTPUT concat network output shape (30, 12)
+123801
+number of parameters None
+SHAPE OF X (1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+FINAL OUTPUT concat network output shape (1200, 12)
+123891
+number of parameters None
+> /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/ppo3/model.py(100)__init__()
+-> human_model_only = tf.keras.models.Sequential(train_model.layers[12:24])
+(Pdb) *** NameError: name 'params' is not defined
+(Pdb) <baselines.common.distributions.CategoricalPd object at 0x7f572a8c9b10>
+(Pdb) <tf.Tensor 'ppo_agent/ppo2_model/Ob_1:0' shape=(1200, 5, 4, 20) dtype=float32>
+(Pdb) *** AttributeError: 'Tensor' object has no attribute 'to_numpy'
+(Pdb) *** NameError: name 'np' is not defined
+(Pdb) <tf.Operation 'PrintV2' type=PrintV2>
+(Pdb) *** tensorflow.python.framework.errors_impl.InvalidArgumentError: You must feed a value for placeholder tensor 'ppo_agent/ppo2_model/Ob_1' with dtype float and shape [1200,5,4,20]
+	 [[node ppo_agent/ppo2_model/Ob_1 (defined at /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:31) ]]
+
+Caused by op 'ppo_agent/ppo2_model/Ob_1', defined at:
+  File "../lta_ppo/train_model_on_bc_only.py", line 247, in <module>
+    @ex.automain
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/experiment.py", line 137, in automain
+    self.run_commandline()
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/experiment.py", line 260, in run_commandline
+    return self.run(cmd_name, config_updates, named_configs, {}, args)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/experiment.py", line 209, in run
+    run()
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/run.py", line 221, in __call__
+    self.result = self.main_function(*args)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/config/captured_function.py", line 46, in captured_function
+    result = wrapped(*args, **kwargs)
+  File "../lta_ppo/train_model_on_bc_only.py", line 286, in bc_run
+    model = create_model(gym_env, "ppo_agent", **params)
+  File "../../human_aware_rl/baselines_utils_for_lta.py", line 479, in create_model
+    network_kwargs=kwargs
+  File "/home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/ppo3/ppo3.py", line 126, in learn_human_model
+    max_grad_norm=max_grad_norm, scope=scope)
+  File "/home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/ppo3/model.py", line 45, in __init__
+    train_model = policy(nbatch_train, nsteps, sess)
+  File "/home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/policies.py", line 204, in policy_fn
+    X = observ_placeholder if observ_placeholder is not None else observation_placeholder(ob_space, batch_size=nbatch)
+  File "/home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py", line 31, in observation_placeholder
+    return tf.placeholder(shape=(batch_size,) + ob_space.shape, dtype=dtype, name=name)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/array_ops.py", line 2077, in placeholder
+    return gen_array_ops.placeholder(dtype=dtype, shape=shape, name=name)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/ops/gen_array_ops.py", line 5791, in placeholder
+    "Placeholder", dtype=dtype, shape=shape, name=name)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
+    op_def=op_def)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
+    op_def=op_def)
+  File "/home/mzhao2/anaconda3/envs/lta_overcooked/lib/python3.7/site-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+InvalidArgumentError (see above for traceback): You must feed a value for placeholder tensor 'ppo_agent/ppo2_model/Ob_1' with dtype float and shape [1200,5,4,20]
+	 [[node ppo_agent/ppo2_model/Ob_1 (defined at /home/mzhao2/long_term_adaptation/human_aware_rl/baselines/baselines/common/input.py:31) ]]
+(Pdb) 
