@@ -24,7 +24,8 @@ from human_aware_rl.human.process_dataframes import save_npz_file, get_trajs_fro
 #     get_trajs_from_data_for_cross_validation, get_trajs_from_data_specify_groups
 
 # BC_SAVE_DIR = "../data/bc_runs/"
-BC_SAVE_DIR = ''
+# BC_SAVE_DIR = ''
+BC_SAVE_DIR = "data/bc_runs/"
 
 # DEFAULT_DATA_PARAMS = {
 #     "train_mdps": ["simple"],

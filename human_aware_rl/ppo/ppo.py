@@ -27,6 +27,8 @@ from human_aware_rl.imitation.behavioural_cloning import get_bc_agent_from_saved
 from human_aware_rl.experiments.bc_experiments import BEST_BC_MODELS_PATH
 
 
+import ipdb
+
 # PARAMS
 @ex.config
 def my_config():
@@ -151,7 +153,7 @@ def my_config():
     layout_name = None
     start_order_list = None
 
-    rew_shaping_params = {
+    rew_shaping_params_orig = {
         "PLACEMENT_IN_POT_REW": 3,
         "DISH_PICKUP_REWARD": 3,
         "SOUP_PICKUP_REWARD": 5,
@@ -159,7 +161,16 @@ def my_config():
         "POT_DISTANCE_REW": 0,
         "SOUP_DISTANCE_REW": 0,
     }
-    
+
+    rew_shaping_params = {
+        "ONION_IN_EMPTY_POT_REWARD": 0.78 * 2,
+        "ONION_IN_PARTIAL_POT_REWARD": 1.46 * 2,
+        "DISH_PICKUP_REWARD": 0.63 * 2,
+        "SOUP_PICKUP_FROM_READY_POT_REWARD": 0.76 * 2,
+        "BOTH_POTS_FULL_REWARD": 4.93 * 2,
+        "SERVE_SOUP_REWARD": 0 * 2,
+        "SHARED_COUNTER_REWARD": 0.60 * 2,
+    }
     # Env params
     horizon = 400
 
@@ -335,6 +346,30 @@ def plot_ppo_run(name, sparse=False, limit=None, print_config=False, seeds=None,
     if single:
         plt.legend()
 
+
+class DummyLayer(tf.keras.layers.Layer):
+    def __init__(self, var):
+        super(DummyLayer, self).__init__()
+
+        self.saved_var = var
+
+    def build(self, input_shape):
+        self.w = self.saved_var
+
+    def call(self, inputs):
+        return inputs
+
+
+# Testing a dummy model that lets us serialize all the current variables in the tf session
+class DummyModel(tf.keras.Model):
+    def __init__(self, variables):
+        super(DummyModel, self).__init__()
+        self.variable_names = variable_names
+        self.variable_weights = variable_weights
+
+    def call(self, inputs):
+        return inputs
+
 @ex.automain
 # @profile
 def ppo_run(params):
@@ -384,6 +419,66 @@ def ppo_run(params):
         
         # Save model
         save_ppo_model(model, curr_seed_dir + model.agent_name)
+
+        # model_keras = tf.keras.Sequential()
+        keras_layers = []
+        conv_out = tf.keras.layers.Conv2D(
+            filters=params["NUM_FILTERS"],
+            kernel_size=[5, 5],
+            padding="same",
+            dtype=float
+        )
+         # no activation is specified, LeakyReLU is applied as its own layer
+        leaky_relu = tf.keras.layers.LeakyReLU(dtype=float)
+        # add first layer to network
+        keras_layers.append(conv_out)
+        keras_layers.append(leaky_relu)
+
+        num_convs = params["NUM_CONV_LAYERS"]
+        for i in range(0, num_convs - 1):
+            padding = "same" if i < num_convs - 2 else "valid"
+            conv_out = tf.keras.layers.Conv2D(
+                filters=params["NUM_FILTERS"],
+                kernel_size=[3, 3],
+                padding=padding,
+                dtype=float
+            )
+            leaky_relu = tf.keras.layers.LeakyReLU(dtype=float)
+
+            # add to network
+            keras_layers.append(conv_out)
+            keras_layers.append(leaky_relu)
+
+        num_hidden_layers = params["NUM_HIDDEN_LAYERS"]
+        size_hidden_layers = params["SIZE_HIDDEN_LAYERS"]
+        for _ in range(num_hidden_layers):
+            out = tf.keras.layers.Dense(units=size_hidden_layers, dtype=float)
+            leaky_relu = tf.keras.layers.LeakyReLU(dtype=float)
+
+            # add to network
+            keras_layers.append(out)
+            keras_layers.append(leaky_relu)
+        model_keras = tf.keras.Sequential(keras_layers)
+        joint_action = [(0,0) for _ in range(30)]
+        obs, rewards, dones, infos = gym_env.step(joint_action)
+        state_enc = mdp.lossless_state_encoding(obs['overcooked_state'][0])[0]
+        state_enc_tensor = tf.convert_to_tensor(np.array(state_enc), dtype=float)
+        res = model.act_model.step(obs["both_agent_obs"][:,0,:,:,:])
+        ipdb.set_trace()
+
+        # save in h5 format (to load LayersModel later)
+        h5_file = curr_seed_dir + model.agent_name + "_full_model.h5"
+        variables = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+        # ps = model.sess.run(variables)
+        # variable_names = [v.name for v in variables]
+        # weights = [w.tolist() for w in ps]
+        
+        layers = [DummyLayer(v) for v in variables]
+        model_keras = tf.keras.Sequential()
+        for l in layers:
+            model_keras.add(l)
+        model_keras.save(h5_file)
+
         print("Saved training info at", curr_seed_dir + "training_info")
         save_pickle(train_info, curr_seed_dir + "training_info")
         train_infos.append(train_info)

@@ -1,0 +1,97 @@
+{
+  "artifacts": [],
+  "command": "ppo_run",
+  "experiment": {
+    "base_dir": "/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/ppo",
+    "dependencies": [
+      "ale-py==0.7.1",
+      "matplotlib==3.4.2",
+      "memory-profiler==0.58.0",
+      "numpy==1.17.3",
+      "sacred==0.7.4",
+      "seaborn==0.9.0",
+      "tensorflow==1.13.1"
+    ],
+    "mainfile": "ppo.py",
+    "name": "PPO",
+    "repositories": [
+      {
+        "commit": "4c490c9f23f4fe27fd160e8d82add1753b1b8a18",
+        "dirty": true,
+        "url": "git@github.com:HelloN00bman/human_aware_rl.git"
+      }
+    ],
+    "sources": [
+      [
+        "ppo.py",
+        "_sources/ppo_2161951d82bcdb1492c0227d5857e0d4.py"
+      ]
+    ]
+  },
+  "fail_trace": [
+    "Traceback (most recent call last):\n",
+    "  File \"/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/sacred-0.7.4-py3.7.egg/sacred/config/captured_function.py\", line 46, in captured_function\n    result = wrapped(*args, **kwargs)\n",
+    "  File \"ppo/ppo.py\", line 432, in ppo_run\n    # model.save(curr_seed_dir + model.agent_name + \"_full_model.h5\", save_format='h5')\n",
+    "  File \"ppo/ppo.py\", line 432, in ppo_run\n    # model.save(curr_seed_dir + model.agent_name + \"_full_model.h5\", save_format='h5')\n",
+    "  File \"/opt/anaconda3/envs/overcooked/lib/python3.7/bdb.py\", line 88, in trace_dispatch\n    return self.dispatch_line(frame)\n",
+    "  File \"/opt/anaconda3/envs/overcooked/lib/python3.7/bdb.py\", line 113, in dispatch_line\n    if self.quitting: raise BdbQuit\n",
+    "bdb.BdbQuit\n"
+  ],
+  "heartbeat": "2022-03-21T17:39:37.742530",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Core(TM) i7-1060NG7 CPU @ 1.20GHz",
+    "hostname": "GS20103.SP.CS.CMU.EDU",
+    "os": [
+      "Darwin",
+      "Darwin-20.6.0-x86_64-i386-64bit"
+    ],
+    "python_version": "3.7.11"
+  },
+  "meta": {
+    "command": "ppo_run",
+    "options": {
+      "--beat_interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print_config": false,
+      "--priority": null,
+      "--queue": false,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "EX_NAME=ppo_bc_train_simple",
+        "layout_name=simple",
+        "REW_SHAPING_HORIZON=1e6",
+        "PPO_RUN_TOT_TIMESTEPS=100",
+        "LR=1e-3",
+        "GPU_ID=0",
+        "OTHER_AGENT_TYPE=bc_train",
+        "SEEDS=[9456]",
+        "VF_COEF=0.5",
+        "MINIBATCHES=10",
+        "LR_ANNEALING=3",
+        "SELF_PLAY_HORIZON=[5e5, 3e6]",
+        "TIMESTAMP_DIR=False"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2022-03-21T15:55:28.570565",
+  "status": "FAILED",
+  "stop_time": "2022-03-21T17:39:37.751134"
+}

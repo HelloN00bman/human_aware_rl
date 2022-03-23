@@ -1,0 +1,70 @@
+INFO - PPO - Running command 'ppo_run'
+INFO - PPO - Started run with ID "40"
+Creating env with params {'RUN_TYPE': 'ppo', 'SEEDS': [9456], 'LOCAL_TESTING': False, 'EX_NAME': 'ppo_bc_train_simple', 'SAVE_DIR': 'ppo_bc_train_simple/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 12001, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 1.56, 'ONION_IN_PARTIAL_POT_REWARD': 2.92, 'DISH_PICKUP_REWARD': 1.26, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 1.52, 'BOTH_POTS_FULL_REWARD': 9.86, 'SERVE_SOUP_REWARD': 0, 'SHARED_COUNTER_REWARD': 1.2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 80}
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3257: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/_methods.py:161: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+It took 0.17711210250854492 seconds to create mlp
+LOADING BC MODEL FROM: simple_bc_train_seed3
+Loading a model without an environment, this model cannot be trained until it has a valid environment.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+Mlp with different params or mdp found, computing from scratch
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.22551798820495605 seconds to create mlp
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+(30, 5, 4, 20)
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+(1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+TOT NUM UPDATES 0
+Warning: Output is not a terminal (fd=1).
+> [0;32m/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/ppo2/ppo2.py[0m(138)[0;36mlearn[0;34m()[0m
+[0;32m    137 [0;31m    [0;32mimport[0m [0mipdb[0m[0;34m;[0m [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 138 [0;31m    [0;32mfor[0m [0mupdate[0m [0;32min[0m [0mrange[0m[0;34m([0m[0;36m1[0m[0;34m,[0m [0mnupdates[0m[0;34m+[0m[0;36m1[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    139 [0;31m        [0;32massert[0m [0mnbatch[0m [0;34m%[0m [0mnminibatches[0m [0;34m==[0m [0;36m0[0m[0;34m,[0m [0;34m"Have {} total batch size and want {} minibatches, can't split evenly"[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mnbatch[0m[0;34m,[0m [0mnminibatches[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[J[0;38;5;28mipdb> [0mtotal_timesteps[21D[0m
+[J[?7h[0m[?12l[?25h[?2004l1
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h

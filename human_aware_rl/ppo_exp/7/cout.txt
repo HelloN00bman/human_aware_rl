@@ -1,0 +1,131 @@
+INFO - PPO - Running command 'ppo_run'
+INFO - PPO - Started run with ID "7"
+Creating env with params {'RUN_TYPE': 'ppo', 'SEEDS': [9456], 'LOCAL_TESTING': False, 'EX_NAME': 'ppo_bc_train_simple', 'SAVE_DIR': 'ppo_bc_train_simple/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 8000000.0, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 1.56, 'ONION_IN_PARTIAL_POT_REWARD': 2.92, 'DISH_PICKUP_REWARD': 1.26, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 1.52, 'BOTH_POTS_FULL_REWARD': 9.86, 'SERVE_SOUP_REWARD': 0, 'SHARED_COUNTER_REWARD': 1.2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 53280.0}
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3420: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/_methods.py:188: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+It took 0.1901540756225586 seconds to create mlp
+Warning: Output is not a terminal (fd=1).
+> [0;32m/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/utils.py[0m(13)[0;36mload_pickle[0;34m()[0m
+[0;32m     12 [0;31m    [0;32mimport[0m [0mipdb[0m[0;34m;[0m [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m---> 13 [0;31m    [0;32mwith[0m [0mopen[0m[0;34m([0m[0mfix_filetype[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0;34m".pickle"[0m[0;34m)[0m[0;34m,[0m [0;34m"rb"[0m[0;34m)[0m [0;32mas[0m [0mf[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m     14 [0;31m        [0;32mreturn[0m [0mpickle[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mf[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[14D[0m[J[0;38;5;28mipdb> [0mfilename[14D[0m
+[J[?7h[0m[?12l[?25h[?2004l'best_bc_model_paths'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[J[0;38;5;28mipdb> [0mimport os[15D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mw[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[17D[0m[J[0;38;5;28mipdb> [0mos.getcwd()[17D[0m
+[J[?7h[0m[?12l[?25h[?2004l'/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mopen(fix_filetype(filename, ".pickle"), "rb")[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m, ".pickle"), "rb")[0m[K[19D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0md", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0ma", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mt", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0ma", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0m/", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mb", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mc", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0m_", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mr", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mu", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mn", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0ms", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0m/", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mb", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0me", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0ms", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0mt", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0m_", ".pickle"), "rb")[20D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[0m[K[20D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[0m[K[20D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[0m[K[20D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[0m[K[20D[?7h[0m[?12l[?25h[?25l[?7l[0m", ".pickle"), "rb")[0m[K[20D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m+, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0mf, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0mi, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0ml, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0me, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0mn, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0ma, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0mm, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[0me, ".pickle"), "rb")[19D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[67D[0m[J[0;38;5;28mipdb> [0mopen(fix_filetype("data/bc_runs/"+filename, ".pickle"), "rb")[67D[0m
+[J[?7h[0m[?12l[?25h[?2004l<_io.BufferedReader name='data/bc_runs/best_bc_model_paths.pickle'>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mx[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[12D[0m[J[0;38;5;28mipdb> [0mexit()[12D[0m
+[J[?7h[0m[?12l[?25h[?2004l

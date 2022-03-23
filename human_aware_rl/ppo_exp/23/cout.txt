@@ -1,0 +1,481 @@
+INFO - PPO - Running command 'ppo_run'
+INFO - PPO - Started run with ID "23"
+Creating env with params {'RUN_TYPE': 'ppo', 'SEEDS': [9456], 'LOCAL_TESTING': False, 'EX_NAME': 'ppo_bc_train_simple', 'SAVE_DIR': 'ppo_bc_train_simple/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 100, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 1.56, 'ONION_IN_PARTIAL_POT_REWARD': 2.92, 'DISH_PICKUP_REWARD': 1.26, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 1.52, 'BOTH_POTS_FULL_REWARD': 9.86, 'SERVE_SOUP_REWARD': 0, 'SHARED_COUNTER_REWARD': 1.2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 0}
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3257: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/_methods.py:161: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+It took 0.18457984924316406 seconds to create mlp
+LOADING BC MODEL FROM: simple_bc_train_seed3
+Loading a model without an environment, this model cannot be trained until it has a valid environment.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+Mlp with different params or mdp found, computing from scratch
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+It took 0.21836113929748535 seconds to create mlp
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+(30, 5, 4, 20)
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+(1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+TOT NUM UPDATES 0
+TOT NUM UPDATES 0
+Deleting old dir ppo_bc_train_simple/seed9456/ppo_agent
+WARNING:tensorflow:From ppo/ppo.py:243: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING - tensorflow - From ppo/ppo.py:243: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+INFO:tensorflow:Assets added to graph.
+INFO - tensorflow - Assets added to graph.
+INFO:tensorflow:No assets to write.
+INFO - tensorflow - No assets to write.
+INFO:tensorflow:SavedModel written to: ppo_bc_train_simple/seed9456/ppo_agent/saved_model.pb
+INFO - tensorflow - SavedModel written to: ppo_bc_train_simple/seed9456/ppo_agent/saved_model.pb
+Warning: Output is not a terminal (fd=1).
+> [0;32m/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/ppo/ppo.py[0m(419)[0;36mppo_run[0;34m()[0m
+[0;32m    418 [0;31m        [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 419 [0;31m        [0mmodel_keras[0m [0;34m=[0m [0mDummyModel[0m[0;34m([0m[0mvariable_names[0m[0;34m,[0m [0mweights[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    420 [0;31m        [0;31m# model.save(curr_seed_dir + model.agent_name + "_full_model.h5", save_format='h5')[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel_keras = DummyModel(variable_names, weights)[?7h[0m[?12l[?25h[?25l[?7l[55D[0m[J[0;38;5;28mipdb> [0mmodel_keras = DummyModel(variable_names, weights)[55D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0mh[?7h[0m[?12l[?25h[?25l[?7l[0m5[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[31D[0m[J[0;38;5;28mipdb> [0mmodel_keras.save(h5_file)[31D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** NotImplementedError: Currently `save` requires model to be a graph network. Consider using `save_weights`, in order to save the weights of the model.
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[11D[0m[J[0;38;5;28mipdb> [0mmodel[11D[0m
+[J[?7h[0m[?12l[?25h[?2004l<baselines.ppo2.model.Model object at 0x7fadb1f9bb50>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[20D[0m[J[0;38;5;28mipdb> [0mmodel.__dict__[20D[0m
+[J[?7h[0m[?12l[?25h[?2004l{'policy': <function build_policy.<locals>.policy_fn at 0x7fadb1e027a0>, 'ob_space': Box([[[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+  [0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]], [[[20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]]
+
+ [[20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]]
+
+ [[20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]]
+
+ [[20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]]
+
+ [[20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]
+  [20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20. 20.
+   20. 20. 20.]]], (5, 4, 20), float32), 'ac_space': Discrete(6), 'nbatch_act': 30, 'nbatch_train': 1200, 'nsteps': 400, 'ent_coef': 0.0, 'vf_coef': 0.5, 'max_grad_norm': 0.5, 'microbatch_size': None, 'sess': <tensorflow.python.client.session.InteractiveSession object at 0x7fadb1f9bb90>, 'scope': 'ppo_agent', 'A': <tf.Tensor 'Placeholder:0' shape=(?,) dtype=int32>, 'ADV': <tf.Tensor 'Placeholder_1:0' shape=(?,) dtype=float32>, 'R': <tf.Tensor 'Placeholder_2:0' shape=(?,) dtype=float32>, 'OLDNEGLOGPAC': <tf.Tensor 'Placeholder_3:0' shape=(?,) dtype=float32>, 'OLDVPRED': <tf.Tensor 'Placeholder_4:0' shape=(?,) dtype=float32>, 'LR': <tf.Tensor 'Placeholder_5:0' shape=() dtype=float32>, 'CLIPRANGE': <tf.Tensor 'Placeholder_6:0' shape=() dtype=float32>, 'trainer': <tensorflow.python.training.adam.AdamOptimizer object at 0x7fadaf858dd0>, 'grads': [<tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_0:0' shape=(5, 5, 20, 25) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_1:0' shape=(25,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_2:0' shape=(3, 3, 25, 25) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_3:0' shape=(25,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_4:0' shape=(3, 3, 25, 25) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_5:0' shape=(25,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_6:0' shape=(150, 64) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_7:0' shape=(64,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_8:0' shape=(64, 64) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_9:0' shape=(64,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_10:0' shape=(64, 64) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_11:0' shape=(64,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_12:0' shape=(64, 6) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_13:0' shape=(6,) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_14:0' shape=(64, 1) dtype=float32>, <tf.Tensor 'clip_by_global_norm/clip_by_global_norm/_15:0' shape=(1,) dtype=float32>], 'var': (<tf.Variable 'ppo_agent/ppo2_model/pi/conv_initial/kernel:0' shape=(5, 5, 20, 25) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_initial/bias:0' shape=(25,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_0/kernel:0' shape=(3, 3, 25, 25) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_0/bias:0' shape=(25,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_1/kernel:0' shape=(3, 3, 25, 25) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_1/bias:0' shape=(25,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense/kernel:0' shape=(150, 64) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense/bias:0' shape=(64,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_1/kernel:0' shape=(64, 64) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_1/bias:0' shape=(64,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_2/kernel:0' shape=(64, 64) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_2/bias:0' shape=(64,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/w:0' shape=(64, 6) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/b:0' shape=(6,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/vf/w:0' shape=(64, 1) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/vf/b:0' shape=(1,) dtype=float32_ref>), '_train_op': <tf.Operation 'Adam' type=NoOp>, 'loss_names': ['policy_loss', 'value_loss', 'policy_entropy', 'approxkl', 'clipfrac'], 'stats_list': [<tf.Tensor 'Mean_2:0' shape=() dtype=float32>, <tf.Tensor 'mul_1:0' shape=() dtype=float32>, <tf.Tensor 'Mean:0' shape=() dtype=float32>, <tf.Tensor 'mul_4:0' shape=() dtype=float32>, <tf.Tensor 'Mean_4:0' shape=() dtype=float32>], 'train_model': <baselines.common.policies.PolicyWithValue object at 0x7fadaf6a3110>, 'act_model': <baselines.common.policies.PolicyWithValue object at 0x7fadb1fb8850>, 'step': <bound method PolicyWithValue.step of <baselines.common.policies.PolicyWithValue object at 0x7fadb1fb8850>>, 'value': <bound method PolicyWithValue.value of <baselines.common.policies.PolicyWithValue object at 0x7fadb1fb8850>>, 'initial_state': None, 'save': functools.partial(<function save_variables at 0x7fadce345710>, sess=<tensorflow.python.client.session.InteractiveSession object at 0x7fadb1f9bb90>), 'load': functools.partial(<function load_variables at 0x7fadce3457a0>, sess=<tensorflow.python.client.session.InteractiveSession object at 0x7fadb1f9bb90>), 'agent_name': 'ppo_agent', 'dummy_env': <human_aware_rl.baselines_utils.RewardShapingEnv object at 0x7fadce4f0cd0>}
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.__dict__[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[27D[0m[J[0;38;5;28mipdb> [0mmodel.__dict__.keys()[27D[0m
+[J[?7h[0m[?12l[?25h[?2004ldict_keys(['policy', 'ob_space', 'ac_space', 'nbatch_act', 'nbatch_train', 'nsteps', 'ent_coef', 'vf_coef', 'max_grad_norm', 'microbatch_size', 'sess', 'scope', 'A', 'ADV', 'R', 'OLDNEGLOGPAC', 'OLDVPRED', 'LR', 'CLIPRANGE', 'trainer', 'grads', 'var', '_train_op', 'loss_names', 'stats_list', 'train_model', 'act_model', 'step', 'value', 'initial_state', 'save', 'load', 'agent_name', 'dummy_env'])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.__dict__.keys()[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[23D[0m[J[0;38;5;28mipdb> [0mmodel.train_model[23D[0m
+[J[?7h[0m[?12l[?25h[?2004l<baselines.common.policies.PolicyWithValue object at 0x7fadaf6a3110>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.train_model[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[J[0;38;5;28mipdb> [0mmodel.act_model[21D[0m
+[J[?7h[0m[?12l[?25h[?2004l<baselines.common.policies.PolicyWithValue object at 0x7fadb1fb8850>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[J[0;38;5;28mipdb> [0mmodel.var[15D[0m
+[J[?7h[0m[?12l[?25h[?2004l(<tf.Variable 'ppo_agent/ppo2_model/pi/conv_initial/kernel:0' shape=(5, 5, 20, 25) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_initial/bias:0' shape=(25,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_0/kernel:0' shape=(3, 3, 25, 25) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_0/bias:0' shape=(25,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_1/kernel:0' shape=(3, 3, 25, 25) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/conv_1/bias:0' shape=(25,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense/kernel:0' shape=(150, 64) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense/bias:0' shape=(64,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_1/kernel:0' shape=(64, 64) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_1/bias:0' shape=(64,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_2/kernel:0' shape=(64, 64) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/dense_2/bias:0' shape=(64,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/w:0' shape=(64, 6) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/pi/b:0' shape=(6,) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/vf/w:0' shape=(64, 1) dtype=float32_ref>, <tf.Variable 'ppo_agent/ppo2_model/vf/b:0' shape=(1,) dtype=float32_ref>)
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mlmodel.var[9D[?7h[0m[?12l[?25h[?25l[?7l[0memodel.var[9D[?7h[0m[?12l[?25h[?25l[?7l[0mnmodel.var[9D[?7h[0m[?12l[?25h[?25l[?7l[0m(model.var[9D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[20D[0m[J[0;38;5;28mipdb> [0mlen(model.var)[20D[0m
+[J[?7h[0m[?12l[?25h[?2004l16
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mlen(model.var)[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m[[?7h[0m[?12l[?25h[?25l[?7l[0m0[?7h[0m[?12l[?25h[?25l[?7l[0m][?7h[0m[?12l[?25h[?25l[?7l[18D[0m[J[0;38;5;28mipdb> [0mmodel.var[0][18D[0m
+[J[?7h[0m[?12l[?25h[?2004l<tf.Variable 'ppo_agent/ppo2_model/pi/conv_initial/kernel:0' shape=(5, 5, 20, 25) dtype=float32_ref>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0][?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[34D[0m[J[0;38;5;28mipdb> [0mmodel.var[0].__dict__.keys()[34D[0m
+[J[?7h[0m[?12l[?25h[?2004ldict_keys(['_in_graph_mode', '_graph_key', '_trainable', '_initial_value', '_variable', '_initializer_op', '_snapshot', '_caching_device', '_save_slice_info', '_constraint', '_setattr_tracking', '_unconditional_checkpoint_dependencies', '_unconditional_dependency_names', '_unconditional_deferred_dependencies', '_update_uid', '_name_based_restores'])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0].__dict__.keys()[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0mh[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[29D[0m[J[0;38;5;28mipdb> [0mmodel.var[0]._graph_key[29D[0m
+[J[?7h[0m[?12l[?25h[?2004l'grap-key-1/'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0]._graph_key[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0mh[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[33D[0m[J[0;38;5;28mipdb> [0mmodel.var[0]._in_graph_mode[33D[0m
+[J[?7h[0m[?12l[?25h[?2004lTrue
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0]._in_graph_mode[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[23D[0m[J[0;38;5;28mipdb> [0mmodel.var[0].name[23D[0m
+[J[?7h[0m[?12l[?25h[?2004l'ppo_agent/ppo2_model/pi/conv_initial/kernel:0'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0].name[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[29D[0m[J[0;38;5;28mipdb> [0mmodel.var[0].activation[29D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'RefVariable' object has no attribute 'activation'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0].activation[?7h[0m[?12l[?25h[?25l[?7l[29D[0;38;5;28mipdb> [0mmodel.var[0].activation[0m
+
+
+
+
+
+
+[0m [7A[29C[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[27D[0m[J[0;38;5;28mipdb> [0mmodel.var[0].train_op[27D[0m
+[J[?7h[0m[?12l[?25h[?2004lException in thread Thread-17:
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/terminal/ptutils.py", line 113, in get_completions
+    yield from self._get_completions(body, offset, cursor_position, self.ipy_completer)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/terminal/ptutils.py", line 129, in _get_completions
+    for c in completions:
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/core/completer.py", line 438, in _deduplicate_completions
+    completions = list(completions)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/core/completer.py", line 1818, in completions
+    for c in self._completions(text, offset, _timeout=self.jedi_compute_type_timeout/1000):
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/core/completer.py", line 1862, in _completions
+    full_text=full_text, cursor_line=cursor_line, cursor_pos=cursor_column)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/core/completer.py", line 2030, in _complete
+    cursor_pos, cursor_line, full_text)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/core/completer.py", line 1374, in _jedi_matches
+    text[:offset], namespaces, column=cursor_column, line=cursor_line + 1)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/jedi/api/__init__.py", line 726, in __init__
+    project=Project(Path.cwd()), **kwds)
+TypeError: __init__() got an unexpected keyword argument 'column'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/threading.py", line 926, in _bootstrap_inner
+    self.run()
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/threading.py", line 870, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/terminal/debugger.py", line 122, in in_thread
+    line = self.pt_app.prompt()
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/shortcuts/prompt.py", line 1013, in prompt
+    return self.app.run(set_exception_handler=set_exception_handler)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/application/application.py", line 817, in run
+    self.run_async(pre_run=pre_run, set_exception_handler=set_exception_handler)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/application/application.py", line 783, in run_async
+    return await _run_async2()
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/application/application.py", line 771, in _run_async2
+    await self.cancel_and_wait_for_background_tasks()
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/application/application.py", line 872, in cancel_and_wait_for_background_tasks
+    await task
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/buffer.py", line 1854, in new_coroutine
+    await coroutine(*a, **kw)
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/buffer.py", line 1684, in async_completer
+    document, complete_event
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/completion/base.py", line 270, in get_completions_async
+    document, complete_event
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/prompt_toolkit/completion/base.py", line 196, in get_completions_async
+    for item in self.get_completions(document, complete_event):
+  File "/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/IPython/terminal/ptutils.py", line 116, in get_completions
+    exc_type, exc_value, exc_tb = sys.exc_info()
+NameError: name 'sys' is not defined
+
+*** AttributeError: 'RefVariable' object has no attribute 'activation'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0].train_op[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m_train_op[8D[?7h[0m[?12l[?25h[?25l[?7l[20D[0m[J[0;38;5;28mipdb> [0mmodel.var[0]._train_op[28D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'RefVariable' object has no attribute '_train_op'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0]._train_op[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mtrain_op[0m[K[8D[?7h[0m[?12l[?25h[?25l[?7l[19D[0m[J[0;38;5;28mipdb> [0mmodel.var[0].train_op[27D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'RefVariable' object has no attribute 'train_op'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var[0].train_op[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m.train_op[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[0m.train_op[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[0m.train_op[0m[K[9D[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[J[0;38;5;28mipdb> [0mmodel.var.train_op[24D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'tuple' object has no attribute 'train_op'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var.train_op[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m_train_op[8D[?7h[0m[?12l[?25h[?25l[?7l[17D[0m[J[0;38;5;28mipdb> [0mmodel.var._train_op[25D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'tuple' object has no attribute '_train_op'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.var._train_op[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m._train_op[0m[K[10D[?7h[0m[?12l[?25h[?25l[?7l[0m._train_op[0m[K[10D[?7h[0m[?12l[?25h[?25l[?7l[0m._train_op[0m[K[10D[?7h[0m[?12l[?25h[?25l[?7l[0m_train_op[0m[K[10D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[J[0;38;5;28mipdb> [0mmodel._train_op[21D[0m
+[J[?7h[0m[?12l[?25h[?2004l<tf.Operation 'Adam' type=NoOp>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel._train_op[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[27D[0m[J[0;38;5;28mipdb> [0mmodel.__dict__.keys()[27D[0m
+[J[?7h[0m[?12l[?25h[?2004ldict_keys(['policy', 'ob_space', 'ac_space', 'nbatch_act', 'nbatch_train', 'nsteps', 'ent_coef', 'vf_coef', 'max_grad_norm', 'microbatch_size', 'sess', 'scope', 'A', 'ADV', 'R', 'OLDNEGLOGPAC', 'OLDVPRED', 'LR', 'CLIPRANGE', 'trainer', 'grads', 'var', '_train_op', 'loss_names', 'stats_list', 'train_model', 'act_model', 'step', 'value', 'initial_state', 'save', 'load', 'agent_name', 'dummy_env'])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[J[0;38;5;28mipdb> [0mmodel.add_layer[21D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'Model' object has no attribute 'add_layer'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[J[0;38;5;28mipdb> [0mmodel.add[15D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'Model' object has no attribute 'add'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[27D[0m[J[0;38;5;28mipdb> [0mmodel_keras.add_layer[27D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'DummyModel' object has no attribute 'add_layer'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel_keras.add_layer[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[J[0;38;5;28mipdb> [0mmodel_keras.add[21D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'DummyModel' object has no attribute 'add'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[24D[0m[J[0;38;5;28mipdb> [0mmodel_keras.layers[24D[0m
+[J[?7h[0m[?12l[?25h[?2004l[]
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h

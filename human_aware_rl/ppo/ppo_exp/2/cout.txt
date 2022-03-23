@@ -1,0 +1,11 @@
+INFO - PPO - Running command 'ppo_run'
+INFO - PPO - Started run with ID "2"
+Warning: Output is not a terminal (fd=1).
+> [0;32m/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/ppo/ppo.py[0m(342)[0;36mppo_run[0;34m()[0m
+[0;32m    341 [0;31m    [0;32mimport[0m [0mipdb[0m[0;34m;[0m [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 342 [0;31m    [0mcreate_dir_if_not_exists[0m[0;34m([0m[0mparams[0m[0;34m[[0m[0;34m"SAVE_DIR"[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    343 [0;31m    [0msave_pickle[0m[0;34m([0m[0mparams[0m[0;34m,[0m [0mparams[0m[0;34m[[0m[0;34m"SAVE_DIR"[0m[0;34m][0m [0;34m+[0m [0;34m"config"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m[[?7h[0m[?12l[?25h[?25l[?7l[0m"[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m"[?7h[0m[?12l[?25h[?25l[?7l[0m][?7h[0m[?12l[?25h[?25l[?7l[26D[0m[J[0;38;5;28mipdb> [0mparams["mdp_params"][26D[0m
+[J[?7h[0m[?12l[?25h[?2004l{'layout_name': None, 'start_order_list': None, 'rew_shaping_params': {'PLACEMENT_IN_POT_REW': 3, 'DISH_PICKUP_REWARD': 3, 'SOUP_PICKUP_REWARD': 5, 'DISH_DISP_DISTANCE_REW': 0, 'POT_DISTANCE_REW': 0, 'SOUP_DISTANCE_REW': 0}}
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h

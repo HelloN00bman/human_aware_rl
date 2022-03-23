@@ -1,0 +1,985 @@
+INFO - PPO - Running command 'ppo_run'
+INFO - PPO - Started run with ID "43"
+Creating env with params {'RUN_TYPE': 'ppo', 'SEEDS': [9456], 'LOCAL_TESTING': False, 'EX_NAME': 'ppo_bc_train_simple', 'SAVE_DIR': 'ppo_bc_train_simple/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 100, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 1.56, 'ONION_IN_PARTIAL_POT_REWARD': 2.92, 'DISH_PICKUP_REWARD': 1.26, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 1.52, 'BOTH_POTS_FULL_REWARD': 9.86, 'SERVE_SOUP_REWARD': 0, 'SHARED_COUNTER_REWARD': 1.2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 0}
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3257: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/_methods.py:161: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+It took 0.1787402629852295 seconds to create mlp
+LOADING BC MODEL FROM: simple_bc_train_seed3
+Loading a model without an environment, this model cannot be trained until it has a valid environment.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+Mlp with different params or mdp found, computing from scratch
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+It took 0.20404410362243652 seconds to create mlp
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+(30, 5, 4, 20)
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+(1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+TOT NUM UPDATES 0
+TOT NUM UPDATES 0
+Deleting old dir ppo_bc_train_simple/seed9456/ppo_agent
+WARNING:tensorflow:From ppo/ppo.py:243: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING - tensorflow - From ppo/ppo.py:243: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+INFO:tensorflow:Assets added to graph.
+INFO - tensorflow - Assets added to graph.
+INFO:tensorflow:No assets to write.
+INFO - tensorflow - No assets to write.
+INFO:tensorflow:SavedModel written to: ppo_bc_train_simple/seed9456/ppo_agent/saved_model.pb
+INFO - tensorflow - SavedModel written to: ppo_bc_train_simple/seed9456/ppo_agent/saved_model.pb
+Warning: Output is not a terminal (fd=1).
+> [0;32m/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/ppo/ppo.py[0m(462)[0;36mppo_run[0;34m()[0m
+[0;32m    461 [0;31m        [0;31m# save in h5 format (to load LayersModel later)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 462 [0;31m        [0mh5_file[0m [0;34m=[0m [0mcurr_seed_dir[0m [0;34m+[0m [0mmodel[0m[0;34m.[0m[0magent_name[0m [0;34m+[0m [0;34m"_full_model.h5"[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    463 [0;31m        [0mvariables[0m [0;34m=[0m [0mtf[0m[0;34m.[0m[0mget_collection[0m[0;34m([0m[0mtf[0m[0;34m.[0m[0mGraphKeys[0m[0;34m.[0m[0mGLOBAL_VARIABLES[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mj[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m=[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m[[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m0[?7h[0m[?12l[?25h[?25l[?7l[0m,[?7h[0m[?12l[?25h[?25l[?7l[0m0[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m3[?7h[0m[?12l[?25h[?25l[?7l[0m0[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[0m][?7h[0m[?12l[?25h[?25l[?7l[48D[0m[J[0;38;5;28mipdb> [0mjoint_actions = [(0,0) for _ in range(30)][48D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0mj[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[32D[0m[J[0;38;5;28mipdb> [0mgym_env.step(join_actions)[32D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** NameError: name 'join_actions' is not defined
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mgym_env.step(join_actions)[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mt_actions)[9D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[33D[0m[J[0;38;5;28mipdb> [0mgym_env.step(joint_actions)[33D[0m
+[J[?7h[0m[?12l[?25h[?2004l({'both_agent_obs': array([[[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       ...,
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]]]), 'overcooked_state': array([<overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a17b9d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a15cd50>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a15cd10>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f9539f47190>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a132210>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a132e10>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a141150>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a14c810>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a14cb10>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a15ccd0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1299d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a129f90>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f9539f3c4d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181f10>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181850>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181750>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a510>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a610>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a750>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a890>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a9d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19ab10>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19ac50>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a4d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a3d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a390>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a210>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181f90>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a19a250>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181e50>],
+      dtype=object), 'other_agent_env_idx': array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0])}, [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], array([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False]), ({'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}, {'shaped_r': 0}))
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mgym_env.step(joint_actions)[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mogym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mbgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0msgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m,gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mrgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0megym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mwgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0magym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mrgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mdgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0msgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m,gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mdgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mogym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mngym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0megym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0msgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m,gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0migym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mngym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mfgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0mogym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0msgym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m=gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[0m gym_env.step(joint_actions)[27D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[62D[0m[J[0;38;5;28mipdb> [0mobs, rewards, dones, infos = gym_env.step(joint_actions)[62D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mb[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[9D[0m[J[0;38;5;28mipdb> [0mobs[9D[0m
+[J[?7h[0m[?12l[?25h[?2004l{'both_agent_obs': array([[[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       ...,
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]],
+
+
+
+       [[[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]],
+
+
+        [[[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [1, 0, 1, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 1, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]],
+
+         [[0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0],
+          [0, 0, 0, ..., 0, 0, 0]]]]]), 'overcooked_state': array([<overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a177550>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a11bd50>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a000690>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1815d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181490>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f9539d4a250>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a15ccd0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a0568d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a129510>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a141cd0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a141090>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1418d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a181690>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1c8650>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a13d8d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a17ba50>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a13d350>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1c88d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e23d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e24d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2610>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2750>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2890>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e29d0>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2b10>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2c50>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2290>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2250>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2390>,
+       <overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a1e2110>],
+      dtype=object), 'other_agent_env_idx': array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0])}
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mobs[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[16D[0m[J[0;38;5;28mipdb> [0mobs.keys()[16D[0m
+[J[?7h[0m[?12l[?25h[?2004ldict_keys(['both_agent_obs', 'overcooked_state', 'other_agent_env_idx'])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mobs.keys()[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[11D[0m[J[0;38;5;28mipdb> [0mdones[11D[0m
+[J[?7h[0m[?12l[?25h[?2004larray([False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False, False, False, False, False, False, False,
+       False, False, False])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mdones[?7h[0m[?12l[?25h[?25l[?7l[5D[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mb[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m[[?7h[0m[?12l[?25h[?25l[?7l[0m'[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mb[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m'[?7h[0m[?12l[?25h[?25l[?7l[0m][?7h[0m[?12l[?25h[?25l[?7l[0m[[?7h[0m[?12l[?25h[?25l[?7l[0m0[?7h[0m[?12l[?25h[?25l[?7l[0m][?7h[0m[?12l[?25h[?25l[?7l[32D[0m[J[0;38;5;28mipdb> [0mobs['overcooked_state'][0][32D[0m
+[J[?7h[0m[?12l[?25h[?2004l<overcooked_ai_py.mdp.overcooked_mdp.OvercookedState object at 0x7f953a177550>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mobs['overcooked_state'][0][?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mmobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mdobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mpobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0m.obs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mlobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[C[0mobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0msobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0msobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mlobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0meobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0msobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0msobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0m_obs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0msobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mtobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0maobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mtobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0meobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0m_obs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0meobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mnobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mcobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[C[0mobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mdobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0miobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mnobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0mgobs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[0m(obs['overc[Coked_state'][0][26D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[61D[0m[J[0;38;5;28mipdb> [0mmdp.lossless_state_encoding(obs['overcooked_state'][0])[61D[0m
+[J[?7h[0m[?12l[?25h[?2004l(array([[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]]]), array([[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]]]))
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.lossless_state_encoding(obs['overcooked_state'][0])[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mh[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[67D[0m[J[0;38;5;28mipdb> [0mmdp.lossless_state_encoding(obs['overcooked_state'][0]).shape[67D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'tuple' object has no attribute 'shape'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.lossless_state_encoding(obs['overcooked_state'][0]).shape[?7h[0m[?12l[?25h[?25l[?7l[61D[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.lossless_state_encoding(obs['overcooked_state'][0]).shape[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[55D[?7h[0m[?12l[?25h[?25l[?7l[0mlmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[55D[?7h[0m[?12l[?25h[?25l[?7l[0memdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[55D[?7h[0m[?12l[?25h[?25l[?7l[0mnmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[55D[?7h[0m[?12l[?25h[?25l[?7l[0m(mdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[55D[?7h[0m[?12l[?25h[?25l[?7l[55C[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[66D[0m[J[0;38;5;28mipdb> [0mlen(mdp.lossless_state_encoding(obs['overcooked_state'][0]))[66D[0m
+[J[?7h[0m[?12l[?25h[?2004l2
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mlen(mdp.lossless_state_encoding(obs['overcooked_state'][0]))[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[59D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.los[Cles[C_state_encoding(obs['overco[Cked_state'][0])[0m[K[55D[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.los[Cles[C_state_encoding(obs['overco[Cked_state'][0])[0m[K[55D[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.los[Cles[C_state_encoding(obs['overco[Cked_state'][0])[0m[K[55D[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.los[Cles[C_state_encoding(obs['overco[Cked_state'][0])[0m[K[55D[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[55C[?7h[0m[?12l[?25h[?25l[?7l[0m[[?7h[0m[?12l[?25h[?25l[?7l[0m0[?7h[0m[?12l[?25h[?25l[?7l[0m][?7h[0m[?12l[?25h[?25l[?7l[64D[0m[J[0;38;5;28mipdb> [0mmdp.lossless_state_encoding(obs['overcooked_state'][0])[0][64D[0m
+[J[?7h[0m[?12l[?25h[?2004larray([[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]]])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.lossless_state_encoding(obs['overcooked_state'][0])[0][?7h[0m[?12l[?25h[?25l[?7l[0m,[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mh[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[70D[0m[J[0;38;5;28mipdb> [0mmdp.lossless_state_encoding(obs['overcooked_state'][0])[0].shape[70D[0m
+[J[?7h[0m[?12l[?25h[?2004l(5, 4, 20)
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmdp.lossless_state_encoding(obs['overcooked_state'][0])[0].shape[?7h[0m[?12l[?25h[?25l[?7l[64D[?7h[0m[?12l[?25h[?25l[?7l[0msmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0mtmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0mamdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0mtmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0memdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0m_mdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0memdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0mnmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape[64D[?7h[0m[?12l[?25h[?25l[?7l[0mcmdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].shape
+[15C[?7h[0m[?12l[?25h[?25l[?7l[15D[0;38;5;28mipdb> [0mstate_enc mdp.lossless_state_encoding(obs['overcooked_state'][0])[0].shap
+[79Ce[0m
+[0m [A[16C[?7h[0m[?12l[?25h[?25l[?7l[0m=mdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].sha
+[79Cp[0m
+[0me[A[16C[?7h[0m[?12l[?25h[?25l[?7l[0m mdp.lo[Csle[Cs_state_encoding(obs['overc[Coked_state'][0])[0].sh
+[79Ca[0m
+[0mpe[A[16C[?7h[0m[?12l[?25h[?25l[?7l[0m
+[2C[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m [?7h[0m[?12l[?25h[?25l[?7l[A[79C[0m[K[0m
+[0m [A[78C[?7h[0m[?12l[?25h[?25l[?7l
+[78C[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[76D[0m[J[0;38;5;28mipdb> [0mstate_enc = mdp.lossless_state_encoding(obs['overcooked_state'][0])[0][76D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[28D[0m[J[0;38;5;28mipdb> [0mmodel_keras(state_enc)[28D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: 'tuple' object has no attribute 'ndims'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[J[0;38;5;28mipdb> [0mstate_enc[15D[0m
+[J[?7h[0m[?12l[?25h[?2004larray([[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]]])
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mstate_enc[?7h[0m[?12l[?25h[?25l[?7l[9D[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mtstate_enc[9D[?7h[0m[?12l[?25h[?25l[?7l[0mystate_enc[9D[?7h[0m[?12l[?25h[?25l[?7l[0mpstate_enc[9D[?7h[0m[?12l[?25h[?25l[?7l[0mestate_enc[9D[?7h[0m[?12l[?25h[?25l[?7l[0m(state_enc[9D[?7h[0m[?12l[?25h[?25l[?7l[0;7ms[?7h[0m[?12l[?25h[?25l[?7l[0ms[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[21D[0m[J[0;38;5;28mipdb> [0mtype(state_enc)[21D[0m
+[J[?7h[0m[?12l[?25h[?2004l<class 'numpy.ndarray'>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mtype(state_enc)[?7h[0m[?12l[?25h[?25l[?7l[15D[0mstate_enc[0m[K[?7h[0m[?12l[?25h[?25l[?7l[9D[0mmodel[Ckeras(state_enc)[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mtstate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0mfstate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0m.state_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0mtstate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0mestate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0mnstate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[C[0mstate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0mostate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0mrstate_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[0m(state_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[39D[0m[J[0;38;5;28mipdb> [0mmodel_keras(tf.tensor(state_enc))[39D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** AttributeError: module 'tensorflow' has no attribute 'tensor'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mT[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[15D[0m[J[0;38;5;28mipdb> [0mtf.Tensor[15D[0m
+[J[?7h[0m[?12l[?25h[?2004l<class 'tensorflow.python.framework.ops.Tensor'>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mtf.Tensor[?7h[0m[?12l[?25h[?25l[?7l[9D[0mmodel_ke[Cas(tf.tensor(state_enc))[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mensor(state_enc)[C[0m[K[17D[?7h[0m[?12l[?25h[?25l[?7l[0mTensor(state_enc[C)[17D[?7h[0m[?12l[?25h[?25l[?7l[22D[0m[J[0;38;5;28mipdb> [0mmodel_keras(tf.Tensor(state_enc))[39D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** TypeError: __init__() missing 2 required positional arguments: 'value_index' and 'dtype'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mT[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[26D[0m[J[0;38;5;28mipdb> [0mtf.Tensor(state_enc)[26D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** TypeError: __init__() missing 2 required positional arguments: 'value_index' and 'dtype'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[37D[0m[J[0;38;5;28mipdb> [0mtf.convert_to_tensor(state_enc)[37D[0m
+[J[?7h[0m[?12l[?25h[?2004l<tf.Tensor 'Const_5:0' shape=(5, 4, 20) dtype=int64>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mtf.convert_to_tensor(state_enc)[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0mstf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[C[0mtf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0matf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[C[0mtf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0metf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0m_tf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0metf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0mntf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0mctf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0m_tf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[C[0mtf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0metf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0mntf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0mstf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0motf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0mrtf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0m tf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0m=tf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[0m tf.convert_to_tensor(state_enc)[31D[?7h[0m[?12l[?25h[?25l[?7l[25D[0m[J[0;38;5;28mipdb> [0mstate_enc_tensor = tf.convert_to_tensor(state_enc)[56D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[35D[0m[J[0;38;5;28mipdb> [0mmodel_keras(state_enc_tensor)[35D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** ValueError: Input 0 of layer sequential is incompatible with the layer: expected ndim=4, found ndim=3. Full shape received: [5, 4, 20]
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel_keras(state_enc_tensor)[?7h[0m[?12l[?25h[?25l[?7l[29D[0mstate[Cenc_tensor = tf.co[Cve[Ct_to_tensor(state_enc)[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m[state_enc)[10D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m])[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[58D[0m[J[0;38;5;28mipdb> [0mstate_enc_tensor = tf.convert_to_tensor([state_enc])[58D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** ValueError: Argument must be a dense tensor: [array([[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]],
+
+       [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]]])] - got shape [1, 5, 4, 20], but wanted [1].
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mstate_enc_tensor = tf.convert_to_tensor([state_enc])[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mn[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0mp[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0m.[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0ma[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0mr[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0mr[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0ma[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0my[state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[0m([state_enc])[12D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[0m)[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[68D[0m[J[0;38;5;28mipdb> [0mstate_enc_tensor = tf.convert_to_tensor(np.array([state_enc]))[68D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[22D[0m[J[0;38;5;28mipdb> [0mstate_enc_tensor[22D[0m
+[J[?7h[0m[?12l[?25h[?2004l<tf.Tensor 'Const_7:0' shape=(1, 5, 4, 20) dtype=int64>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mstate_enc_tensor[?7h[0m[?12l[?25h[?25l[?7l[C[0m= tf.convert_to_tensor(np.array([state_enc]))[?7h[0m[?12l[?25h[?25l[?7l[22D[0m[st[Cte_enc])[0m[K[?7h[0m[?12l[?25h[?25l[?7l[52D[0mmodel[Ckeras(state_enc_te[Cso[C)[0m[K[?7h[0m[?12l[?25h[?25l[?7l[35D[0m[J[0;38;5;28mipdb> [0mmodel_keras(state_enc_tensor)[35D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** TypeError: Expected int64, got -0.07302967433402216 of type 'float' instead.
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel_keras(state_enc_tensor)[?7h[0m[?12l[?25h[?25l[?7l[29D[0mstate[Cenc_tensor[0m[K[?7h[0m[?12l[?25h[?25l[?7l[C[0m= tf.convert_to_tensor(np.array([state_enc]))[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[0m,)[?7h[0m[?12l[?25h[?25l[?7l[0m )[?7h[0m[?12l[?25h[?25l[?7l[0md)[?7h[0m[?12l[?25h[?25l[?7l[0mt)[?7h[0m[?12l[?25h[?25l[?7l[0my)[?7h[0m[?12l[?25h[?25l[?7l[0mp)[?7h[0m[?12l[?25h[?25l[?7l[0me)[?7h[0m[?12l[?25h[?25l[?7l[0m=)[?7h[0m[?12l[?25h[?25l[?7l[0mf)[?7h[0m[?12l[?25h[?25l[?7l[0ml)[?7h[0m[?12l[?25h[?25l[?7l[0mo)
+[78C[?7h[0m[?12l[?25h[?25l[?7l[78D[0;38;5;28mipdb> [0mstate_enc_tensor = tf.convert_to_tensor(np.array([state_enc]), dtype=floa
+[79C)[0m
+[0m [A[79C[?7h[0m[?12l[?25h[?25l[?7l
+[79C[0mt[0m
+[0m)[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[A[0m[J[0;38;5;28mipdb> [0mstate_enc_tensor = tf.convert_to_tensor(np.array([state_enc]), dtype=floa
+[79Ct[0m
+[0m)[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[22D[0m[J[0;38;5;28mipdb> [0mstate_enc_tensor[22D[0m
+[J[?7h[0m[?12l[?25h[?2004l<tf.Tensor 'Const_8:0' shape=(1, 5, 4, 20) dtype=float32>
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mstate_enc_tensor[?7h[0m[?12l[?25h[?25l[?7l[22D[0;38;5;28mipdb> [0mstate_enc_tensor = tf.convert_to_tensor(np.array([state_enc]), dtype=floa
+[79Ct[0m
+[0m)[C[?7h[0m[?12l[?25h[?25l[?7l[A[5C[0mmodel[Ckeras(state_enc_te[Cso[C)[0m[K[0m
+[0m [A[34C[?7h[0m[?12l[?25h[?25l[?7l[35D[0m[J[0;38;5;28mipdb> [0mmodel_keras(state_enc_tensor)[35D[0m
+[J[?7h[0m[?12l[?25h[?2004l*** TypeError: Expected int64, got -0.07302967433402216 of type 'float' instead.
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mk[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0my[?7h[0m[?12l[?25h[?25l[?7l[0mp[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[23D[0m[J[0;38;5;28mipdb> [0mmodel_keras.dtype[23D[0m
+[J[?7h[0m[?12l[?25h[?2004l'int64'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h

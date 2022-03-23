@@ -1,0 +1,311 @@
+INFO - PPO - Running command 'ppo_run'
+INFO - PPO - Started run with ID "9"
+Creating env with params {'RUN_TYPE': 'ppo', 'SEEDS': [9456], 'LOCAL_TESTING': False, 'EX_NAME': 'ppo_bc_train_simple', 'SAVE_DIR': 'ppo_bc_train_simple/', 'GPU_ID': 0, 'PPO_RUN_TOT_TIMESTEPS': 100, 'mdp_params': {'layout_name': 'simple', 'start_order_list': None, 'rew_shaping_params': {'ONION_IN_EMPTY_POT_REWARD': 1.56, 'ONION_IN_PARTIAL_POT_REWARD': 2.92, 'DISH_PICKUP_REWARD': 1.26, 'SOUP_PICKUP_FROM_READY_POT_REWARD': 1.52, 'BOTH_POTS_FULL_REWARD': 9.86, 'SERVE_SOUP_REWARD': 0, 'SHARED_COUNTER_REWARD': 1.2}}, 'env_params': {'horizon': 400}, 'mdp_generation_params': {'padded_mdp_shape': [11, 7], 'mdp_shape_fn': [[5, 11], [5, 7]], 'prop_empty_fn': [0.6, 1], 'prop_feats_fn': [0, 0.6]}, 'ENTROPY': 0.1, 'GAMMA': 0.99, 'sim_threads': 30, 'TOTAL_BATCH_SIZE': 12000, 'BATCH_SIZE': 400, 'MAX_GRAD_NORM': 0.1, 'LR': 0.001, 'LR_ANNEALING': 3, 'VF_COEF': 0.5, 'STEPS_PER_UPDATE': 8, 'MINIBATCHES': 10, 'CLIPPING': 0.05, 'LAM': 0.98, 'SELF_PLAY_HORIZON': [500000.0, 3000000.0], 'REW_SHAPING_HORIZON': 1000000.0, 'OTHER_AGENT_TYPE': 'bc_train', 'HM_PARAMS': [True, 0.3], 'NUM_HIDDEN_LAYERS': 3, 'SIZE_HIDDEN_LAYERS': 64, 'NUM_FILTERS': 25, 'NUM_CONV_LAYERS': 3, 'NETWORK_TYPE': 'conv_and_mlp', 'SAVE_BEST_THRESH': 50, 'TRAJECTORY_SELF_PLAY': True, 'VIZ_FREQUENCY': 50, 'grad_updates_per_agent': 0}
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/fromnumeric.py:3420: RuntimeWarning: Mean of empty slice.
+  out=out, **kwargs)
+/opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/numpy/core/_methods.py:188: RuntimeWarning: invalid value encountered in double_scalars
+  ret = ret.dtype.type(ret / rcount)
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+It took 0.18131303787231445 seconds to create mlp
+LOADING BC MODEL FROM: simple_bc_train_seed3
+Loading a model without an environment, this model cannot be trained until it has a valid environment.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/stable-baselines/stable_baselines/common/policies.py:436: flatten (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.flatten instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/ops/math_grad.py:102: div (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Deprecated in favor of operator or tf.math.divide.
+Mlp with different params or mdp found, computing from scratch
+Computing MediumLevelPlanner to be saved in /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/overcooked_ai/overcooked_ai_py/data/planners/simple_am.pkl
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+dish picked up on dispenser.
+onion picked up on dispenser.
+onion picked up on dispenser.
+It took 0.21922802925109863 seconds to create mlp
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/baselines/baselines/common/input.py:57: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+(30, 5, 4, 20)
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:127: conv2d (from tensorflow.python.layers.convolutional) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.conv2d instead.
+WARNING:tensorflow:From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+WARNING - tensorflow - From /Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/baselines_utils.py:143: dense (from tensorflow.python.layers.core) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use keras.layers.dense instead.
+Last layer conv network output shape (30, 64)
+(1200, 5, 4, 20)
+Last layer conv network output shape (1200, 64)
+TOT NUM UPDATES 0
+TOT NUM UPDATES 0
+WARNING:tensorflow:From ppo/ppo.py:243: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING - tensorflow - From ppo/ppo.py:243: simple_save (from tensorflow.python.saved_model.simple_save) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.simple_save.
+WARNING:tensorflow:From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+WARNING - tensorflow - From /opt/anaconda3/envs/overcooked/lib/python3.7/site-packages/tensorflow/python/saved_model/signature_def_utils_impl.py:205: build_tensor_info (from tensorflow.python.saved_model.utils_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+This function will only be available through the v1 compatibility library as tf.compat.v1.saved_model.utils.build_tensor_info or tf.compat.v1.saved_model.build_tensor_info.
+INFO:tensorflow:Assets added to graph.
+INFO - tensorflow - Assets added to graph.
+INFO:tensorflow:No assets to write.
+INFO - tensorflow - No assets to write.
+INFO:tensorflow:SavedModel written to: ppo_bc_train_simple/seed9456/ppo_agent/saved_model.pb
+INFO - tensorflow - SavedModel written to: ppo_bc_train_simple/seed9456/ppo_agent/saved_model.pb
+Warning: Output is not a terminal (fd=1).
+> [0;32m/Users/rapandya/dev/research/longterm_adapt/human_aware_rl/human_aware_rl/ppo/ppo.py[0m(399)[0;36mppo_run[0;34m()[0m
+[0;32m    398 [0;31m        [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 399 [0;31m        [0mprint[0m[0;34m([0m[0;34m"Saved training info at"[0m[0;34m,[0m [0mcurr_seed_dir[0m [0;34m+[0m [0;34m"training_info"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    400 [0;31m        [0msave_pickle[0m[0;34m([0m[0mtrain_info[0m[0;34m,[0m [0mcurr_seed_dir[0m [0;34m+[0m [0;34m"training_info"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mu[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[19D[0m[J[0;38;5;28mipdb> [0mcurr_seed_dir[19D[0m
+[J[?7h[0m[?12l[?25h[?2004l'ppo_bc_train_simple/seed9456/'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[22D[0m[J[0;38;5;28mipdb> [0mmodel.agent_name[22D[0m
+[J[?7h[0m[?12l[?25h[?2004l'ppo_agent'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mv[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0m([?7h[0m[?12l[?25h[?25l[?7l[0mc[?7h[0m[?12l[?25h[?25l[?7l[0mu[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0ms[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0mi[?7h[0m[?12l[?25h[?25l[?7l[0mr[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m+[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m+[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m"[?7h[0m[?12l[?25h[?25l[?7l[0mf[?7h[0m[?12l[?25h[?25l[?7l[0mu[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m"[?7h[0m[?12l[?25h[?25l[?7l[0m)[?7h[0m[?12l[?25h[?25l[?7l[65D[0m[J[0;38;5;28mipdb> [0mmodel.save(curr_seed_dir + model.agent_name + "full_model")[65D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0mo[?7h[0m[?12l[?25h[?25l[?7l[0md[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0ml[?7h[0m[?12l[?25h[?25l[?7l[0m.[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mg[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0mt[?7h[0m[?12l[?25h[?25l[?7l[0m_[?7h[0m[?12l[?25h[?25l[?7l[0mn[?7h[0m[?12l[?25h[?25l[?7l[0ma[?7h[0m[?12l[?25h[?25l[?7l[0mm[?7h[0m[?12l[?25h[?25l[?7l[0me[?7h[0m[?12l[?25h[?25l[?7l[22D[0m[J[0;38;5;28mipdb> [0mmodel.agent_name[22D[0m
+[J[?7h[0m[?12l[?25h[?2004l'ppo_agent'
+[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.agent_name[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[16D[0m[K[?7h[0m[?12l[?25h[?25l[?7l[0mmodel.agent_name[?7h[0m[?12l[?25h[?25l[?7l[10D[0msave(curr_seed_dir + model.agent_name + "full_model")[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[0m_fu[Cl_model")[12D[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[C[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[?7h[0m[?12l[?25h[?25l[?7l[66D[0m[J[0;38;5;28mipdb> [0mmodel.save(curr_seed_dir + model.agent_name + "_full_model")[66D[0m
+[J[?7h[0m[?12l[?25h[?2004l[?2004h[?25l[0m[?7l[0m[J[0;38;5;28mipdb> [6D[6C[?7h[0m[?12l[?25h[?25l[?7l[7D[0m[J[0;38;5;28mipdb> [0mc[7D[0m
+[J[?7h[0m[?12l[?25h[?2004lSaved training info at ppo_bc_train_simple/seed9456/training_info
+INFO - PPO - Result: [defaultdict(<class 'list'>, {})]
